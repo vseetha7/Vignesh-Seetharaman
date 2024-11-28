@@ -132,7 +132,7 @@ const HomePage = () => (
       <div className="relative w-48 h-48 mx-auto mb-8">
         <div className="absolute inset-0 rounded-full bg-gradient-to-r from-cyan-400/30 to-purple-400/30 animate-pulse" />
         <img
-          src="/Vignesh_img.jpg"
+          src="../public/Vignesh_img.jpg"
           alt="Vignesh Seetharaman"
           className="relative z-10 rounded-full w-48 h-48 object-cover border-4 border-cyan-400/30 shadow-lg shadow-cyan-400/20"
         />

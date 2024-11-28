@@ -1,168 +1,161 @@
 import React, { useState, useEffect } from 'react';
-import { Gamepad2, TrendingUp, Cpu, Github, Linkedin, Mail } from 'lucide-react';
+import {
+  Laptop, Dna, Gamepad, TrendingUp, Code, School,
+  Rocket, Star, Sparkles, Ghost
+} from 'lucide-react';
 
-const App = () => {
-  const [activeSection, setActiveSection] = useState('home');
-  const [isFloating, setIsFloating] = useState(true);
+const FloatingIcon = ({ children, delay }) => {
+  return (
+    <div className="absolute animate-bounce" style={{
+      animation: `float 3s ease-in-out infinite ${delay}s`,
+    }}>
+      {children}
+    </div>
+  );
+};
+
+const Portfolio = () => {
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [isHovering, setIsHovering] = useState(false);
 
   useEffect(() => {
-    const floatInterval = setInterval(() => {
-      setIsFloating(prev => !prev);
-    }, 1500);
-
-    return () => clearInterval(floatInterval);
+    const handleMouseMove = (e) => {
+      setMousePosition({ x: e.clientX, y: e.clientY });
+    };
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
-  const sections = {
-    home: {
-      icon: <Gamepad2 className="w-12 h-12 text-purple-500" />,
-      title: "Game Enthusiast & Tech Lover",
-      content: (
-        <div className="space-y-4">
-          <p className="text-lg">
-            Hey there! 👋 I'm Vignesh, a tech enthusiast who loves diving into
-            new technologies, analyzing market trends, and exploring virtual worlds.
-          </p>
-          <div className={`transition-transform duration-1000 ${isFloating ? 'transform translate-y-2' : ''}`}>
-            <Gamepad2 className="w-24 h-24 text-purple-500 mx-auto" />
-          </div>
-        </div>
-      )
-    },
-    gaming: {
-      icon: <Gamepad2 className="w-12 h-12 text-green-500" />,
-      title: "Gaming Passion",
-      content: (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="bg-gradient-to-br from-purple-100 to-purple-200 p-6 rounded-lg">
-            <h3 className="text-xl font-bold mb-2">Favorite Games</h3>
-            <ul className="list-disc pl-5">
-              <li>Call of Duty</li>
-              <li>God of War</li>
-              <li>FIFA</li>
-            </ul>
-          </div>
-          <div className="bg-gradient-to-br from-green-100 to-green-200 p-6 rounded-lg">
-            <h3 className="text-xl font-bold mb-2">Gaming Achievements</h3>
-            <ul className="list-disc pl-5">
-              <li>Champion in Local Tournament</li>
-              <li>1000+ Hours in COD</li>
-              <li>Max Level Achievement</li>
-            </ul>
-          </div>
-        </div>
-      )
-    },
-    stocks: {
-      icon: <TrendingUp className="w-12 h-12 text-blue-500" />,
-      title: "Market Explorer",
-      content: (
-        <div className="space-y-4">
-          <div className="bg-gradient-to-br from-blue-100 to-blue-200 p-6 rounded-lg">
-            <h3 className="text-xl font-bold mb-4">Market Interests</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div>
-                <h4 className="font-bold">Favorite Sectors</h4>
-                <ul className="list-disc pl-5">
-                  <li>Technology</li>
-                  <li>Gaming Industry</li>
-                  <li>Renewable Energy</li>
-                </ul>
-              </div>
-              <div>
-                <h4 className="font-bold">Analysis Tools</h4>
-                <ul className="list-disc pl-5">
-                  <li>Technical Analysis</li>
-                  <li>Fundamental Research</li>
-                  <li>Market Sentiment</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      )
-    },
-    tech: {
-      icon: <Cpu className="w-12 h-12 text-red-500" />,
-      title: "Tech Enthusiast",
-      content: (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="bg-gradient-to-br from-red-100 to-red-200 p-6 rounded-lg">
-            <h3 className="text-xl font-bold mb-2">Tech Stack</h3>
-            <ul className="list-disc pl-5">
-              <li>React & JavaScript</li>
-              <li>Python Development</li>
-              <li>Cloud Technologies</li>
-            </ul>
-          </div>
-          <div className="bg-gradient-to-br from-orange-100 to-orange-200 p-6 rounded-lg">
-            <h3 className="text-xl font-bold mb-2">Current Learning</h3>
-            <ul className="list-disc pl-5">
-              <li>AI/ML</li>
-              <li>Blockchain</li>
-              <li>DevOps</li>
-            </ul>
-          </div>
-        </div>
-      )
-    }
-  };
-
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
-      <nav className="bg-white shadow-lg">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="flex justify-between h-16">
-            <div className="flex space-x-4 items-center">
-              {Object.entries(sections).map(([key, section]) => (
-                <button
-                  key={key}
-                  onClick={() => setActiveSection(key)}
-                  className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-colors ${
-                    activeSection === key
-                      ? 'bg-purple-100 text-purple-700'
-                      : 'hover:bg-gray-100'
-                  }`}
-                >
-                  {React.cloneElement(section.icon, { className: 'w-5 h-5' })}
-                  <span className="capitalize">{key}</span>
-                </button>
-              ))}
-            </div>
-          </div>
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-violet-900 text-white overflow-hidden relative">
+      {/* Animated Background Elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="stars absolute inset-0">
+          {[...Array(20)].map((_, i) => (
+            <Star
+              key={i}
+              className="absolute text-yellow-200 opacity-50 animate-pulse"
+              style={{
+                top: `${Math.random() * 100}%`,
+                left: `${Math.random() * 100}%`,
+                animationDelay: `${Math.random() * 2}s`,
+              }}
+              size={Math.random() * 10 + 5}
+            />
+          ))}
         </div>
-      </nav>
+      </div>
 
-      <main className="max-w-7xl mx-auto px-4 py-12">
-        <div className="bg-white rounded-xl shadow-xl p-8">
-          <div className="text-center mb-8">
-            <div className="flex justify-center mb-4">
-              {sections[activeSection].icon}
-            </div>
-            <h2 className="text-3xl font-bold text-gray-800">
-              {sections[activeSection].title}
-            </h2>
+      {/* Main Content */}
+      <div className="relative z-10 max-w-6xl mx-auto px-4 py-16">
+        {/* Hero Section */}
+        <div className="text-center mb-16 relative">
+          <FloatingIcon delay={0}>
+            <Rocket className="text-blue-400 absolute -top-16 -right-8" size={32} />
+          </FloatingIcon>
+          <FloatingIcon delay={0.5}>
+            <Ghost className="text-purple-400 absolute -top-8 -left-8" size={32} />
+          </FloatingIcon>
+
+          <div className="relative inline-block"
+               onMouseEnter={() => setIsHovering(true)}
+               onMouseLeave={() => setIsHovering(false)}>
+            <img
+              src="/api/placeholder/200/200"
+              alt="Profile"
+              className="rounded-full w-48 h-48 mx-auto mb-8 border-4 border-purple-500 transform transition-all duration-500 hover:scale-110 hover:rotate-6"
+            />
+            {isHovering && (
+              <div className="absolute inset-0 flex items-center justify-center">
+                <Sparkles className="text-yellow-400 animate-spin" size={64} />
+              </div>
+            )}
           </div>
 
-          <div className="mt-8">
-            {sections[activeSection].content}
-          </div>
+          <h1 className="text-6xl font-bold mb-4 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 text-transparent bg-clip-text animate-gradient">
+            Vignesh Seetharaman
+          </h1>
+          <p className="text-2xl text-blue-200 mb-8">Where Tech Meets Biotech</p>
         </div>
 
-        <footer className="mt-12 text-center">
-          <div className="flex justify-center space-x-6">
-            <a href="https://github.com/vseetha7" className="text-gray-600 hover:text-gray-900">
-              <Github className="w-6 h-6" />
-            </a>
-            <a href="https://linkedin.com/in/yourusername" className="text-gray-600 hover:text-gray-900">
-              <Linkedin className="w-6 h-6" />
-            </a>
-            <a href="mailto:your.email@example.com" className="text-gray-600 hover:text-gray-900">
-              <Mail className="w-6 h-6" />
-            </a>
-          </div>
-        </footer>
-      </main>
+        {/* Interactive Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {[
+            {
+              title: "Biotech Journey",
+              icon: <Dna size={32} className="text-green-400" />,
+              content: "ASU Biotech & Bioenterprise Student",
+              color: "from-green-400",
+              details: "First semester student passionate about biotechnology"
+            },
+            {
+              title: "Tech Explorer",
+              icon: <Laptop size={32} className="text-blue-400" />,
+              content: "Hardware & Tech Enthusiast",
+              color: "from-blue-400",
+              details: "Deep knowledge of mobile & laptop specifications"
+            },
+            {
+              title: "Market Analyst",
+              icon: <TrendingUp size={32} className="text-yellow-400" />,
+              content: "Stock Market Enthusiast",
+              color: "from-yellow-400",
+              details: "Passionate about trading and market analysis"
+            },
+            {
+              title: "Gaming & Anime",
+              icon: <Gamepad size={32} className="text-pink-400" />,
+              content: "Entertainment Passion",
+              color: "from-pink-400",
+              details: "Roblox player and anime enthusiast"
+            },
+            {
+              title: "Code Creator",
+              icon: <Code size={32} className="text-purple-400" />,
+              content: "Web Developer",
+              color: "from-purple-400",
+              details: "Creating websites during free time"
+            },
+            {
+              title: "Research Experience",
+              icon: <School size={32} className="text-cyan-400" />,
+              content: "Armtek Internship",
+              color: "from-cyan-400",
+              details: "Hands-on biotechnology research experience"
+            }
+          ].map((card, index) => (
+            <div
+              key={index}
+              className="group relative overflow-hidden rounded-xl bg-white/10 backdrop-blur-sm p-6 transform transition-all duration-300 hover:scale-105 hover:bg-white/20"
+              style={{
+                transform: isHovering ? `translate(${
+                  (mousePosition.x / window.innerWidth - 0.5) * -20
+                }px, ${
+                  (mousePosition.y / window.innerHeight - 0.5) * -20
+                }px)` : 'none'
+              }}
+            >
+              <div className="absolute inset-0 bg-gradient-to-br opacity-0 group-hover:opacity-20 transition-opacity duration-300 ${card.color} to-transparent" />
+              <div className="relative z-10">
+                <div className="mb-4 transform transition-transform duration-300 group-hover:scale-110">
+                  {card.icon}
+                </div>
+                <h3 className="text-xl font-bold mb-2">{card.title}</h3>
+                <p className="text-blue-200">{card.content}</p>
+                <p className="mt-2 text-sm text-gray-300">{card.details}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Floating Action Button */}
+        <button
+          className="fixed bottom-8 right-8 bg-purple-500 p-4 rounded-full shadow-lg transform transition-all duration-300 hover:scale-110 hover:rotate-12"
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        >
+          <Rocket className="text-white" />
+        </button>
+      </div>
     </div>
   );
 };

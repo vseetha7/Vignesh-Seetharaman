@@ -375,7 +375,7 @@ const GamingPage = () => (
         <div className="space-y-6">
           <div className="group relative overflow-hidden rounded-lg">
             <img
-              src="/api/placeholder/600/300"
+              src="C:\Users\Vaishnavi\Downloads\image (8).png"
               alt="Genshin Impact"
               className="w-full h-48 object-cover rounded-lg transform transition-transform group-hover:scale-105"
             />
@@ -577,7 +577,6 @@ const AnimePage = () => (
             <li>• Attack on Titan</li>
 <li>• Death Note</li>
 <li>• Fullmetal Alchemist: Brotherhood</li>
-<li>• Steins;Gate</li>
 <li>• One Piece</li>
 <li>• Code Geass</li>
 <li>• Hunter x Hunter</li>

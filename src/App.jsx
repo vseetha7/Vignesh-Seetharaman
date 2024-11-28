@@ -76,7 +76,7 @@ export default function PortfolioApp() {
               <a href="#" className="text-white hover:text-cyan-400 transition-colors">
                 <Linkedin className="w-6 h-6" />
               </a>
-              <a href="vseetha7@asu.edu" className="text-white hover:text-cyan-400 transition-colors">
+              <a href="mailto:vseetha7@asu.edu" className="text-white hover:text-cyan-400 transition-colors">
                 <Mail className="w-6 h-6" />
               </a>
             </div>
@@ -128,13 +128,12 @@ const NavButton = ({ Icon, text, onClick, active }) => (
 const HomePage = () => (
   <div className="min-h-[calc(100vh-5rem)] flex items-center justify-center">
     <div className="text-center space-y-8">
-      {/* Updated Profile Photo Section with correct image path */}
+      {/* Profile Photo Section */}
       <div className="relative w-48 h-48 mx-auto mb-8">
-        <div className="absolute inset-0 rounded-full bg-gradient-to-r from-cyan-400/30 to-purple-400/30 animate-pulse" />
         <img
-          src="../public/Vignesh_img.jpg"
+          src="/profile.jpg"  // Replace with your actual image path
           alt="Vignesh Seetharaman"
-          className="relative z-10 rounded-full w-48 h-48 object-cover border-4 border-cyan-400/30 shadow-lg shadow-cyan-400/20"
+          className="rounded-full w-48 h-48 object-cover border-4 border-cyan-400/30 shadow-lg shadow-cyan-400/20"
         />
         <div className="absolute inset-0 rounded-full bg-gradient-to-r from-cyan-400/10 via-purple-400/10 to-blue-400/10 animate-pulse" />
       </div>

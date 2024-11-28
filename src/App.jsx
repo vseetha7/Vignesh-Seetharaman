@@ -1,39 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import {
-  Github,
-  Linkedin,
-  Mail,
-  Monitor,
-  TrendingUp,
-  Gamepad,
-  Tv,
-  Home,
-  Brain,
-  Cpu
-} from 'lucide-react';
+import { Github, Linkedin, Mail, Monitor, TrendingUp, Gamepad, Tv, Home, Brain, Cpu } from 'lucide-react';
 
-// Content Card Component
-const ContentCard = ({ title, children }) => (
-  <div className="bg-gray-800/50 rounded-lg p-6">
-    <h2 className="text-2xl font-bold text-white mb-4">{title}</h2>
-    {children}
-  </div>
-);
-
-// Navigation Button Component
-const NavButton = ({ Icon, text, onClick, active }) => (
-  <button
-    onClick={onClick}
-    className={`flex items-center space-x-2 px-3 py-2 rounded-md transition-colors ${
-      active ? 'text-cyan-400 bg-cyan-900/30' : 'text-gray-400 hover:text-cyan-400 hover:bg-cyan-900/20'
-    }`}
-  >
-    <Icon className="w-5 h-5" />
-    <span className="font-mono">{text}</span>
-  </button>
-);
-
-// DNA Helix Animation Component
+// Reusing your DNA Helix component
 const DNAHelix = () => (
   <div className="absolute left-0 h-full w-16 opacity-30 animate-spin-slow">
     {[...Array(10)].map((_, i) => (
@@ -50,7 +18,7 @@ const DNAHelix = () => (
   </div>
 );
 
-// Circuit Lines Background Component
+// Circuit Lines Background
 const CircuitLines = () => (
   <div className="absolute inset-0 overflow-hidden opacity-20">
     {[...Array(20)].map((_, i) => (
@@ -69,43 +37,132 @@ const CircuitLines = () => (
   </div>
 );
 
-// Home Page Component
-const HomePage = () => (
-  <div className="min-h-[calc(100vh-5rem)] flex items-center justify-center">
-    <div className="text-center space-y-8">
-      <div className="relative w-48 h-48 mx-auto mb-8">
-        <div className="absolute inset-0 rounded-full bg-gradient-to-r from-cyan-400/30 to-purple-400/30 animate-pulse" />
-        <img
-          src="/api/placeholder/192/192"
-          alt="Vignesh Seetharaman"
-          className="relative z-10 rounded-full w-48 h-48 object-cover border-4 border-cyan-400/30 shadow-lg shadow-cyan-400/20"
-        />
-        <div className="absolute inset-0 rounded-full bg-gradient-to-r from-cyan-400/10 via-purple-400/10 to-blue-400/10 animate-pulse" />
-      </div>
+export default function PortfolioApp() {
+  const [currentPage, setCurrentPage] = useState('home');
+  const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
 
-      <h1 className="text-6xl font-bold mb-6">
-        <span className="text-white">Hi, I'm </span>
-        <span className="bg-gradient-to-r from-cyan-400 via-purple-400 to-blue-400 text-transparent bg-clip-text">
-          Vignesh Seetharaman
-        </span>
-      </h1>
-      <div className="flex items-center justify-center space-x-4 mb-8">
-        <Brain className="w-6 h-6 text-green-400" />
-        <span className="text-gray-300">|</span>
-        <Cpu className="w-6 h-6 text-blue-400" />
-        <span className="text-gray-300">|</span>
-        <Gamepad className="w-6 h-6 text-purple-400" />
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      setCursorPos({ x: e.clientX, y: e.clientY });
+    };
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
+
+  const PageWrapper = ({ children }) => (
+    <div className="min-h-screen bg-gray-900 relative overflow-hidden">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(50,50,150,0.2),rgba(0,0,0,0.4))]" />
+      <CircuitLines />
+      <div className="fixed left-4 top-1/2 transform -translate-y-1/2">
+        <DNAHelix />
       </div>
-      <p className="text-xl text-gray-300 mb-8 font-mono">
-        Biotech Student | Tech Enthusiast | Gamer
-      </p>
+      <div className="fixed right-4 top-1/2 transform -translate-y-1/2">
+        <DNAHelix />
+      </div>
+      <div className="relative z-10">
+        {/* Navigation */}
+        <nav className="fixed top-0 w-full bg-black/30 backdrop-blur-sm">
+          <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+            <div className="text-cyan-400 font-mono text-xl">Vignesh</div>
+            <div className="flex space-x-6">
+              <NavButton Icon={Home} text="Home" onClick={() => setCurrentPage('home')} active={currentPage === 'home'} />
+              <NavButton Icon={Monitor} text="Tech" onClick={() => setCurrentPage('tech')} active={currentPage === 'tech'} />
+              <NavButton Icon={TrendingUp} text="Stocks" onClick={() => setCurrentPage('stocks')} active={currentPage === 'stocks'} />
+              <NavButton Icon={Gamepad} text="Gaming" onClick={() => setCurrentPage('gaming')} active={currentPage === 'gaming'} />
+              <NavButton Icon={Tv} text="Anime" onClick={() => setCurrentPage('anime')} active={currentPage === 'anime'} />
+            </div>
+            <div className="flex space-x-6">
+
+              <a href="#" className="text-white hover:text-cyan-400 transition-colors">
+                <Linkedin className="w-6 h-6" />
+              </a>
+              <a href="vseetha7@asu.edu" className="text-white hover:text-cyan-400 transition-colors">
+                <Mail className="w-6 h-6" />
+              </a>
+            </div>
+          </div>
+        </nav>
+        <div className="pt-20 px-4">
+          {children}
+        </div>
+      </div>
+      <div
+        className="pointer-events-none fixed w-4 h-4 rounded-full bg-cyan-400/50 blur-sm"
+        style={{
+          left: cursorPos.x,
+          top: cursorPos.y,
+          transform: 'translate(-50%, -50%)',
+          transition: 'all 0.1s ease-out',
+        }}
+      />
     </div>
-  </div>
+  );
+
+  const pages = {
+    home: <HomePage />,
+    tech: <TechnologyPage />,
+    stocks: <StocksPage />,
+    gaming: <GamingPage />,
+    anime: <AnimePage />
+  };
+
+  return (
+    <PageWrapper>
+      {pages[currentPage]}
+    </PageWrapper>
+  );
+}
+
+const NavButton = ({ Icon, text, onClick, active }) => (
+  <button
+    onClick={onClick}
+    className={`flex items-center space-x-2 px-3 py-2 rounded-md transition-colors ${
+      active ? 'text-cyan-400 bg-cyan-900/30' : 'text-gray-400 hover:text-cyan-400 hover:bg-cyan-900/20'
+    }`}
+  >
+    <Icon className="w-5 h-5" />
+    <span className="font-mono">{text}</span>
+  </button>
 );
 
-// Technology Page Component
+const HomePage = () => {
+  return (
+    <div className="min-h-[calc(100vh-5rem)] flex items-center justify-center">
+      <div className="text-center space-y-8">
+        {/* Profile Photo Section */}
+        <div className="relative w-48 h-48 mx-auto mb-8">
+          <div className="absolute inset-0 rounded-full bg-gradient-to-r from-cyan-400/30 to-purple-400/30 animate-pulse" />
+          <img
+            src="/assets/Vignesh_img.jpg"  {/* Updated path to match your project structure */}
+            alt="Vignesh Seetharaman"
+            className="relative z-10 rounded-full w-48 h-48 object-cover border-4 border-cyan-400/30 shadow-lg shadow-cyan-400/20"
+          />
+          <div className="absolute inset-0 rounded-full bg-gradient-to-r from-cyan-400/10 via-purple-400/10 to-blue-400/10 animate-pulse" />
+        </div>
+
+        <h1 className="text-6xl font-bold mb-6">
+          <span className="text-white">Hi, I'm </span>
+          <span className="bg-gradient-to-r from-cyan-400 via-purple-400 to-blue-400 text-transparent bg-clip-text">
+            Vignesh Seetharaman
+          </span>
+        </h1>
+        <div className="flex items-center justify-center space-x-4 mb-8">
+          <Brain className="w-6 h-6 text-green-400" />
+          <span className="text-gray-300">|</span>
+          <Cpu className="w-6 h-6 text-blue-400" />
+          <span className="text-gray-300">|</span>
+          <Gamepad className="w-6 h-6 text-purple-400" />
+        </div>
+        <p className="text-xl text-gray-300 mb-8 font-mono">
+          Biotech Student | Tech Enthusiast | Gamer
+        </p>
+      </div>
+    </div>
+  );
+};
 const TechnologyPage = () => (
   <div className="max-w-6xl mx-auto grid gap-6">
+    {/* Personal Tech Journey */}
     <ContentCard title="My Tech Journey">
       <div className="text-gray-300 font-mono space-y-4">
         <p className="leading-relaxed">
@@ -121,6 +178,7 @@ const TechnologyPage = () => (
       </div>
     </ContentCard>
 
+    {/* Current Project */}
     <ContentCard title="Current Project: Biotech Data Visualization">
       <div className="bg-cyan-900/20 p-4 rounded-lg border border-cyan-400/20 mb-4">
         <div className="flex items-start space-x-3">
@@ -137,7 +195,9 @@ const TechnologyPage = () => (
       </div>
     </ContentCard>
 
+    {/* Skills Grid */}
     <div className="grid md:grid-cols-2 gap-6">
+      {/* Technical Skills */}
       <ContentCard title="Technical Arsenal">
         <div className="space-y-4">
           <div>
@@ -177,6 +237,7 @@ const TechnologyPage = () => (
         </div>
       </ContentCard>
 
+      {/* Hardware Enthusiasm */}
       <ContentCard title="Hardware Geek Corner">
         <div className="space-y-4 text-gray-300 font-mono">
           <div className="bg-cyan-900/20 p-4 rounded-lg border border-cyan-400/20">
@@ -217,6 +278,7 @@ const TechnologyPage = () => (
       </ContentCard>
     </div>
 
+    {/* Learning Journey */}
     <ContentCard title="Current Learning Focus">
       <div className="grid md:grid-cols-2 gap-4">
         <div className="bg-cyan-900/20 p-4 rounded-lg border border-cyan-400/20">
@@ -258,12 +320,10 @@ const TechnologyPage = () => (
   </div>
 );
 
-// Stocks Page Component
 const StocksPage = () => (
   <div className="max-w-6xl mx-auto grid gap-6 md:grid-cols-2">
     <ContentCard title="Trading Strategy">
       <div className="space-y-4 text-gray-300 font-mono">
-        {/* AI-Enhanced Analysis */}
         <div className="flex items-start space-x-3">
           <TrendingUp className="w-5 h-5 text-cyan-400 mt-1" />
           <div>
@@ -271,8 +331,6 @@ const StocksPage = () => (
             <p>Leveraging machine learning models for pattern recognition in biotech and tech sectors, achieving 87% prediction accuracy.</p>
           </div>
         </div>
-
-        {/* Research-Backed Approach */}
         <div className="flex items-start space-x-3">
           <Brain className="w-5 h-5 text-purple-400 mt-1" />
           <div>
@@ -280,31 +338,10 @@ const StocksPage = () => (
             <p>Combining biotech expertise with deep market analysis. Early investor in key players like Moderna pre-pandemic.</p>
           </div>
         </div>
-
-        {/* Risk Management */}
-        <div className="bg-cyan-900/20 p-4 rounded-lg border border-cyan-400/20 mt-6">
-          <h3 className="text-cyan-400 font-mono mb-2">Risk Management</h3>
-          <ul className="space-y-2">
-            <li className="flex items-center space-x-2">
-              <div className="w-2 h-2 bg-green-400 rounded-full" />
-              <span>Position sizing based on volatility metrics</span>
-            </li>
-            <li className="flex items-center space-x-2">
-              <div className="w-2 h-2 bg-yellow-400 rounded-full" />
-              <span>Stop-loss optimization using ML models</span>
-            </li>
-            <li className="flex items-center space-x-2">
-              <div className="w-2 h-2 bg-red-400 rounded-full" />
-              <span>Portfolio hedging with inverse ETFs</span>
-            </li>
-          </ul>
-        </div>
       </div>
     </ContentCard>
-
     <ContentCard title="Market Performance">
       <div className="space-y-4 text-gray-300 font-mono">
-        {/* Key Achievements */}
         <div className="flex items-start space-x-3">
           <Monitor className="w-5 h-5 text-green-400 mt-1" />
           <div>
@@ -316,61 +353,18 @@ const StocksPage = () => (
             </ul>
           </div>
         </div>
-
-        {/* Portfolio Strategy */}
         <div className="border-l-2 border-cyan-400 pl-4 mt-4">
           <div className="text-white font-semibold mb-2">Portfolio Strategy</div>
           <p>Sophisticated risk management with hedging techniques and strategic diversification across high-growth sectors.</p>
-        </div>
-
-        {/* Sector Focus */}
-        <div className="bg-gray-800/50 rounded-lg p-4 mt-4">
-          <h3 className="text-white font-semibold mb-3">Sector Focus</h3>
-          <div className="grid grid-cols-2 gap-4">
-            <div className="bg-cyan-900/20 p-3 rounded border border-cyan-400/20">
-              <h4 className="text-cyan-400 text-sm mb-2">Biotech</h4>
-              <p className="text-sm">45% allocation</p>
-            </div>
-            <div className="bg-purple-900/20 p-3 rounded border border-purple-400/20">
-              <h4 className="text-purple-400 text-sm mb-2">Tech</h4>
-              <p className="text-sm">35% allocation</p>
-            </div>
-            <div className="bg-green-900/20 p-3 rounded border border-green-400/20">
-              <h4 className="text-green-400 text-sm mb-2">Clean Energy</h4>
-              <p className="text-sm">15% allocation</p>
-            </div>
-            <div className="bg-yellow-900/20 p-3 rounded border border-yellow-400/20">
-              <h4 className="text-yellow-400 text-sm mb-2">Others</h4>
-              <p className="text-sm">5% allocation</p>
-            </div>
-          </div>
-        </div>
-
-        {/* Future Outlook */}
-        <div className="bg-gradient-to-r from-cyan-900/20 to-purple-900/20 p-4 rounded-lg border border-cyan-400/20">
-          <h3 className="text-white font-semibold mb-2">Future Outlook</h3>
-          <ul className="space-y-2">
-            <li className="flex items-center space-x-2">
-              <div className="w-2 h-2 bg-cyan-400 rounded-full" />
-              <span>Focus on AI-driven healthcare solutions</span>
-            </li>
-            <li className="flex items-center space-x-2">
-              <div className="w-2 h-2 bg-purple-400 rounded-full" />
-              <span>Expanding into quantum computing sector</span>
-            </li>
-            <li className="flex items-center space-x-2">
-              <div className="w-2 h-2 bg-green-400 rounded-full" />
-              <span>Monitoring AR/VR developments</span>
-            </li>
-          </ul>
         </div>
       </div>
     </ContentCard>
   </div>
 );
-          // Gaming Page Component
+
 const GamingPage = () => (
   <div className="max-w-6xl mx-auto space-y-8">
+    {/* Hero Gaming Section */}
     <div className="text-center mb-8">
       <h1 className="text-4xl font-bold text-white mb-4">Gaming Portfolio</h1>
       <p className="text-gray-300 font-mono max-w-2xl mx-auto">
@@ -379,6 +373,7 @@ const GamingPage = () => (
     </div>
 
     <div className="grid gap-6 md:grid-cols-2">
+      {/* Modern Games */}
       <ContentCard title="Current Gaming Obsessions">
         <div className="space-y-6">
           <div className="group relative overflow-hidden rounded-lg bg-gray-800/50 p-6">
@@ -421,6 +416,7 @@ const GamingPage = () => (
         </div>
       </ContentCard>
 
+      {/* Roblox Section */}
       <ContentCard title="Roblox Adventures">
         <div className="space-y-4">
           <div className="bg-gray-800/50 rounded-lg p-4">
@@ -443,16 +439,18 @@ const GamingPage = () => (
         </div>
       </ContentCard>
 
+      {/* Traditional Games */}
       <ContentCard title="Traditional Gaming">
         <div className="space-y-4">
           <div className="flex items-start space-x-3">
             <div>
-              <h3 className="text-white font-semibold">♟️ Chess</h3>
+              <h3 className="text-white font-semibold"> ♟️ Chess</h3>
               <p className="text-gray-300 font-mono">1200+ ELO Rating • Favorite Opening: Sicilian Defense</p>
             </div>
           </div>
 
           <div className="flex items-start space-x-3">
+
             <div>
               <h3 className="text-white font-semibold">🥏 Carrom</h3>
               <p className="text-gray-300 font-mono">State Level Player • Double-Board Specialist</p>
@@ -468,6 +466,7 @@ const GamingPage = () => (
         </div>
       </ContentCard>
 
+      {/* Gaming Achievements */}
       <ContentCard title="Gaming Milestones">
         <div className="space-y-4">
           <div className="border-l-2 border-cyan-400 pl-4">
@@ -498,78 +497,142 @@ const GamingPage = () => (
     </div>
   </div>
 );
-
-// Main Portfolio App Component
-export default function PortfolioApp() {
-  const [currentPage, setCurrentPage] = useState('home');
-  const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
-
-  useEffect(() => {
-    const handleMouseMove = (e) => {
-      setCursorPos({ x: e.clientX, y: e.clientY });
-    };
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
-
-  const PageWrapper = ({ children }) => (
-    <div className="min-h-screen bg-gray-900 relative overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(50,50,150,0.2),rgba(0,0,0,0.4))]" />
-      <CircuitLines />
-      <div className="fixed left-4 top-1/2 transform -translate-y-1/2">
-        <DNAHelix />
-      </div>
-      <div className="fixed right-4 top-1/2 transform -translate-y-1/2">
-        <DNAHelix />
-      </div>
-      <div className="relative z-10">
-        <nav className="fixed top-0 w-full bg-black/30 backdrop-blur-sm">
-          <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-            <div className="text-cyan-400 font-mono text-xl">Vignesh</div>
-            <div className="flex space-x-6">
-              <NavButton Icon={Home} text="Home" onClick={() => setCurrentPage('home')} active={currentPage === 'home'} />
-              <NavButton Icon={Monitor} text="Tech" onClick={() => setCurrentPage('tech')} active={currentPage === 'tech'} />
-              <NavButton Icon={TrendingUp} text="Stocks" onClick={() => setCurrentPage('stocks')} active={currentPage === 'stocks'} />
-              <NavButton Icon={Gamepad} text="Gaming" onClick={() => setCurrentPage('gaming')} active={currentPage === 'gaming'} />
-              <NavButton Icon={Tv} text="Anime" onClick={() => setCurrentPage('anime')} active={currentPage === 'anime'} />
-            </div>
-            <div className="flex space-x-6">
-              <a href="#" className="text-white hover:text-cyan-400 transition-colors">
-                <Linkedin className="w-6 h-6" />
-              </a>
-              <a href="mailto:vseetha7@asu.edu" className="text-white hover:text-cyan-400 transition-colors">
-                <Mail className="w-6 h-6" />
-              </a>
-            </div>
-          </div>
-        </nav>
-        <div className="pt-20 px-4">
-          {children}
-        </div>
-      </div>
-      <div
-        className="pointer-events-none fixed w-4 h-4 rounded-full bg-cyan-400/50 blur-sm"
-        style={{
-          left: cursorPos.x,
-          top: cursorPos.y,
-          transform: 'translate(-50%, -50%)',
-          transition: 'all 0.1s ease-out',
-        }}
-      />
+const AnimePage = () => (
+  <div className="max-w-6xl mx-auto space-y-8">
+    {/* Hero Section */}
+    <div className="text-center mb-8">
+      <h1 className="text-4xl font-bold text-white mb-4">Anime Collection</h1>
+      <p className="text-gray-300 font-mono max-w-2xl mx-auto">
+        Exploring the vast world of anime from classics to latest releases
+      </p>
     </div>
-  );
 
-  const pages = {
-    home: <HomePage />,
-    tech: <TechnologyPage />,
-    stocks: <StocksPage />,
-    gaming: <GamingPage />,
-    anime: <AnimePage />
-  };
+    <div className="grid gap-6 md:grid-cols-3">
+      <ContentCard title="Currently Watching">
+        <div className="space-y-4">
+          <div className="bg-gray-800/50 rounded-lg p-4">
+            <div className="flex items-center space-x-2 mb-2">
+              <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
+              <span className="text-white font-semibold">Seasonal Picks</span>
+            </div>
+            <ul className="space-y-3 text-gray-300 font-mono">
+            <li>• Let This Grieving Soul Retire</li>
+<li>• Re:ZERO -Starting Life in Another World- Season 3</li>
+<li>• I'll Become a Villainess Who Goes Down in History</li>
+<li>• Tying the Knot with an Amagami Sister</li>
+<li>• Blue Box</li>
+<li>• 365 Days to the Wedding</li>
+<li>• Dandadan</li>
+<li>• Loner Life in Another World</li>
+<li>• Bleach: Thousand-Year Blood War - The Conflict</li>
+<li>• Is It Wrong to Try to Pick Up Girls in a Dungeon? V</li>
+<li>• Sword Art Online Alternative: Gun Gale Online II</li>
+<li>• Orb: On the Movements of the Earth</li>
+<li>• Blue Lock Season 2</li>
+<li>• Tower of God Season 2: Workshop Battle</li>
+<li>• You are Ms. Servant</li>
+<li>• Ranma ½ (2024)</li>
+<li>• Blue Exorcist: Beyond the Snow Saga</li>
+<li>• Yakuza Fiancé: Raise wa Tanin ga Ii</li>
+<li>• The Most Notorious "Talker" Runs the World's Greatest Clan</li>
+<li>• Seirei Gensouki: Spirit Chronicles Season 2</li>
+<li>• The Do-Over Damsel Conquers The Dragon Emperor</li>
+<li>• Dragon Ball Daima</li>
+<li>• Shangri-La Frontier Season 2</li>
+<li>• Demon Lord 2099</li>
+<li>• Arifureta: From Commonplace to World's Strongest Season 3</li>
+<li>• Uzumaki: Spiral into Horror</li>
+<li>• As a Reincarnated Aristocrat, I'll Use My Appraisal Skill to Rise in the World Season 2</li>
+            </ul>
+          </div>
+        </div>
+      </ContentCard>
 
-  return (
-    <PageWrapper>
-      {pages[currentPage]}
-    </PageWrapper>
-  );
-}
+      <ContentCard title="All-Time Favorites">
+        <div className="space-y-4 text-gray-300 font-mono">
+          <div className="border-l-2 border-purple-400 pl-4">
+            <h3 className="text-white font-semibold mb-2">Masterpieces</h3>
+            <ul className="space-y-2">
+              <li>• Attack on Titan</li>
+              <li>• Full Metal Alchemist: Brotherhood</li>
+              <li>• Steins;Gate</li>
+              <li>• Death Note</li>
+              <li>• Code Geass</li>
+            </ul>
+          </div>
+
+          <div className="border-l-2 border-blue-400 pl-4">
+            <h3 className="text-white font-semibold mb-2">Modern Classics</h3>
+            <ul className="space-y-2">
+            <li>• Attack on Titan</li>
+<li>• Death Note</li>
+<li>• Fullmetal Alchemist: Brotherhood</li>
+<li>• One Piece</li>
+<li>• Code Geass</li>
+<li>• Hunter x Hunter</li>
+<li>• Neon Genesis Evangelion</li>
+<li>• Cowboy Bebop</li>
+<li>• Monster</li>
+<li>• JoJo's Bizarre Adventure</li>
+<li>• Gintama</li>
+<li>• Made in Abyss</li>
+<li>• Demon Slayer</li>
+<li>• Jujutsu Kaisen</li>
+<li>• Mob Psycho 100</li>
+<li>• Naruto</li>
+<li>• Bleach</li>
+<li>• Dragon Ball Z</li>
+<li>• Your Name</li>
+<li>• Spirited Away</li>
+<li>• One Punch Man</li>
+<li>• My Hero Academia</li>
+<li>• Violet Evergarden</li>
+<li>• Tokyo Ghoul</li>
+<li>• Black Clover</li>
+<li>• The Promised Neverland</li>
+<li>• Vinland Saga</li>
+<li>• Parasyte</li>
+<li>• Haikyu!!</li>
+            </ul>
+          </div>
+        </div>
+      </ContentCard>
+
+      <ContentCard title="Future Watchlist">
+        <div className="space-y-4">
+        <div className="mt-4 p-4 bg-gradient-to-r from-purple-900/50 to-blue-900/50 rounded-lg">
+          <h3 className="text-white font-semibold mb-2">Most Anticipated</h3>
+          <p className="text-gray-300 font-mono">Looking forward to potential adaptations of:</p>
+          <ul className="space-y-2 text-gray-300 font-mono mt-2">
+            <li>• Solo Leveling Season 2</li>
+            <li>• Hell's Paradise Season 2</li>
+          </ul>
+        </div>
+          <div className="bg-gray-800/50 rounded-lg p-4">
+            <h3 className="text-white font-semibold mb-2">Upcoming 2025</h3>
+            <ul className="space-y-2 text-gray-300 font-mono">
+              <li>• Bleach: Thousand-Year Blood War - The Final Act</li>
+              <li>• Kaiju No. 8</li>
+              <li>• Dragon Ball Daima</li>
+              <li>• Black Butler: Public School Arc</li>
+              <li>• Demon Slayer Season 5</li>
+            </ul>
+          </div>
+
+          <div className="bg-gray-800/50 rounded-lg p-4 mt-4">
+            <h3 className="text-white font-semibold mb-2">Rumored 2026</h3>
+            <ul className="space-y-2 text-gray-300 font-mono">
+              <li>• One Punch Man Season 3</li>
+              <li>• Chainsaw Man Season 2</li>
+              <li>• Attack on Titan: Alternative</li>
+              <li>• Tokyo Ghoul: Brotherhood</li>
+              <li>• My Hero Academia: Final Season</li>
+            </ul>
+          </div>
+
+
+        </div>
+      </ContentCard>
+    </div>
+  </div>
+);

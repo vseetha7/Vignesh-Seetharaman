@@ -125,41 +125,47 @@ const NavButton = ({ Icon, text, onClick, active }) => (
   </button>
 );
 
-const HomePage = () => {
-  return (
-    <div className="min-h-[calc(100vh-5rem)] flex items-center justify-center">
-      <div className="text-center space-y-8">
-        {/* Profile Photo Section */}
-        <div className="relative w-48 h-48 mx-auto mb-8">
-          <div className="absolute inset-0 rounded-full bg-gradient-to-r from-cyan-400/30 to-purple-400/30 animate-pulse" />
-          <img
-            src="/assets/Vignesh_img.jpg"  {/* Updated path to match your project structure */}
-            alt="Vignesh Seetharaman"
-            className="relative z-10 rounded-full w-48 h-48 object-cover border-4 border-cyan-400/30 shadow-lg shadow-cyan-400/20"
-          />
-          <div className="absolute inset-0 rounded-full bg-gradient-to-r from-cyan-400/10 via-purple-400/10 to-blue-400/10 animate-pulse" />
-        </div>
-
-        <h1 className="text-6xl font-bold mb-6">
-          <span className="text-white">Hi, I'm </span>
-          <span className="bg-gradient-to-r from-cyan-400 via-purple-400 to-blue-400 text-transparent bg-clip-text">
-            Vignesh Seetharaman
-          </span>
-        </h1>
-        <div className="flex items-center justify-center space-x-4 mb-8">
-          <Brain className="w-6 h-6 text-green-400" />
-          <span className="text-gray-300">|</span>
-          <Cpu className="w-6 h-6 text-blue-400" />
-          <span className="text-gray-300">|</span>
-          <Gamepad className="w-6 h-6 text-purple-400" />
-        </div>
-        <p className="text-xl text-gray-300 mb-8 font-mono">
-          Biotech Student | Tech Enthusiast | Gamer
-        </p>
+const HomePage = () => (
+  <div className="min-h-[calc(100vh-5rem)] flex items-center justify-center">
+    <div className="text-center space-y-8">
+      {/* Updated Profile Photo Section with correct image path */}
+      <div className="relative w-48 h-48 mx-auto mb-8">
+        <div className="absolute inset-0 rounded-full bg-gradient-to-r from-cyan-400/30 to-purple-400/30 animate-pulse" />
+        <img
+          src="../public/Vignesh_img.jpg"
+          alt="Vignesh Seetharaman"
+          className="relative z-10 rounded-full w-48 h-48 object-cover border-4 border-cyan-400/30 shadow-lg shadow-cyan-400/20"
+        />
+        <div className="absolute inset-0 rounded-full bg-gradient-to-r from-cyan-400/10 via-purple-400/10 to-blue-400/10 animate-pulse" />
       </div>
+
+      <h1 className="text-6xl font-bold mb-6">
+        <span className="text-white">Hi, I'm </span>
+        <span className="bg-gradient-to-r from-cyan-400 via-purple-400 to-blue-400 text-transparent bg-clip-text">
+          Vignesh Seetharaman
+        </span>
+      </h1>
+      <div className="flex items-center justify-center space-x-4 mb-8">
+        <Brain className="w-6 h-6 text-green-400" />
+        <span className="text-gray-300">|</span>
+        <Cpu className="w-6 h-6 text-blue-400" />
+        <span className="text-gray-300">|</span>
+        <Gamepad className="w-6 h-6 text-purple-400" />
+      </div>
+      <p className="text-xl text-gray-300 mb-8 font-mono">
+        Biotech Student | Tech Enthusiast | Gamer
+      </p>
     </div>
-  );
-};
+  </div>
+);
+
+const ContentCard = ({ title, children }) => (
+  <div className="bg-gray-800/50 backdrop-blur-sm rounded-lg p-6 border border-cyan-400/20 shadow-lg shadow-cyan-400/10">
+    <h2 className="text-2xl font-bold text-cyan-400 mb-4 font-mono">{title}</h2>
+    {children}
+  </div>
+);
+
 const TechnologyPage = () => (
   <div className="max-w-6xl mx-auto grid gap-6">
     {/* Personal Tech Journey */}

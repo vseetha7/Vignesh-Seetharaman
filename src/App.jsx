@@ -1,125 +1,126 @@
 import React, { useState, useEffect } from 'react';
-import {
-  Gamepad2, TrendingUp, Cpu, Github, Linkedin, Mail,
-  Mountain, Cloud, Sun, Trees
-} from 'lucide-react';
+import { Github, Linkedin, Mail, Dna, Circuit, Gamepad2, Flask } from 'lucide-react';
 
-const AnimatedScene = () => {
-  const [scrollY, setScrollY] = useState(0);
+const DNAHelix = () => (
+  <div className="absolute left-0 h-full w-16 opacity-30 animate-spin-slow">
+    {[...Array(10)].map((_, i) => (
+      <div key={i} className="absolute w-full" style={{ top: `${i * 10}%` }}>
+        <div className="relative w-full h-8">
+          <div className="absolute w-4 h-4 bg-green-400 rounded-full left-0 animate-pulse"
+               style={{ animationDelay: `${i * 0.2}s` }} />
+          <div className="absolute w-4 h-4 bg-purple-400 rounded-full right-0 animate-pulse"
+               style={{ animationDelay: `${i * 0.2 + 0.1}s` }} />
+          <div className="absolute w-full h-0.5 bg-blue-400/50 top-1/2 transform -translate-y-1/2" />
+        </div>
+      </div>
+    ))}
+  </div>
+);
+
+const CircuitLines = () => (
+  <div className="absolute inset-0 overflow-hidden opacity-20">
+    {[...Array(20)].map((_, i) => (
+      <div
+        key={i}
+        className="absolute bg-blue-400"
+        style={{
+          height: '1px',
+          width: `${Math.random() * 100}px`,
+          left: `${Math.random() * 100}%`,
+          top: `${Math.random() * 100}%`,
+          transform: `rotate(${Math.random() * 360}deg)`,
+        }}
+      />
+    ))}
+  </div>
+);
+
+const App = () => {
+  const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
+    const handleMouseMove = (e) => {
+      setCursorPos({ x: e.clientX, y: e.clientY });
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
   return (
-    <div className="fixed inset-0 pointer-events-none">
-      {/* Sky gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-sky-300 to-sky-500" />
+    <div className="min-h-screen bg-gray-900 relative overflow-hidden">
+      {/* Animated Background Elements */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(50,50,150,0.2),rgba(0,0,0,0.4))]" />
+      <CircuitLines />
 
-      {/* Animated clouds */}
-      {[...Array(5)].map((_, i) => (
-        <div
-          key={i}
-          className="absolute"
-          style={{
-            left: `${(i * 20) + (scrollY * 0.1)}%`,
-            top: `${i * 15}%`,
-            transform: `translateX(-${scrollY * (0.1 * (i + 1))}px)`,
-            transition: 'transform 0.1s linear',
-          }}
-        >
-          <Cloud className="text-white w-24 h-24 opacity-80" />
-        </div>
-      ))}
-
-      {/* Animated sun */}
-      <div
-        className="absolute right-20 top-20 animate-pulse"
-        style={{
-          transform: `translateY(${Math.sin(Date.now() / 1000) * 10}px)`,
-        }}
-      >
-        <Sun className="text-yellow-400 w-32 h-32" />
+      {/* DNA Animation */}
+      <div className="fixed left-4 top-1/2 transform -translate-y-1/2">
+        <DNAHelix />
+      </div>
+      <div className="fixed right-4 top-1/2 transform -translate-y-1/2">
+        <DNAHelix />
       </div>
 
-      {/* Mountains in the background */}
-      <div className="absolute bottom-0 w-full">
-        <div className="relative h-64">
-          <Mountain className="absolute bottom-0 left-0 text-gray-700 w-96 h-64 opacity-80" />
-          <Mountain className="absolute bottom-0 left-1/4 text-gray-800 w-96 h-72 opacity-90" />
-          <Mountain className="absolute bottom-0 right-0 text-gray-600 w-96 h-56 opacity-70" />
-        </div>
-      </div>
-
-      {/* Foreground elements */}
-      <div className="absolute bottom-0 w-full">
-        <div className="relative h-48">
-          <Trees className="absolute bottom-0 left-10 text-green-700 w-32 h-48" />
-          <Trees className="absolute bottom-0 right-20 text-green-800 w-40 h-56" />
-        </div>
-      </div>
-    </div>
-  );
-};
-
-const HeroSection = () => {
-  return (
-    <div className="relative min-h-screen flex items-center justify-center px-4">
-      <div className="relative z-10 text-white text-center">
-        <h1 className="text-6xl font-bold mb-4 animate-fade-in">
-          Hi, I'm{' '}
-          <span className="bg-gradient-to-r from-purple-400 to-pink-400 text-transparent bg-clip-text">
-            Vignesh
-          </span>
-        </h1>
-        <p className="text-2xl mb-8 animate-slide-up">
-          Biotech Student | Tech Enthusiast | Gamer
-        </p>
-        <div className="flex space-x-4 justify-center">
-          <button className="bg-white/20 backdrop-blur-sm px-6 py-3 rounded-lg hover:bg-white/30 transition-all transform hover:scale-105">
-            Explore My Work
-          </button>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-const App = () => {
-  return (
-    <div className="relative min-h-screen overflow-x-hidden">
-      <AnimatedScene />
-      <HeroSection />
-
-      {/* Content sections would go here */}
-
-      {/* Navigation */}
-      <nav className="fixed top-0 w-full z-50 px-6 py-4">
-        <div className="flex justify-between items-center">
-          <div className="text-white font-bold text-xl">VS</div>
-          <div className="flex space-x-6">
-            {[
-              { icon: <Github />, link: "https://github.com/vseetha7" },
-              { icon: <Linkedin />, link: "#" },
-              { icon: <Mail />, link: "mailto:your.email@example.com" }
-            ].map((item, i) => (
-              <a
-                key={i}
-                href={item.link}
-                className="text-white hover:text-purple-400 transition-colors"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {item.icon}
+      {/* Main Content */}
+      <div className="relative z-10">
+        {/* Navigation */}
+        <nav className="fixed top-0 w-full bg-black/30 backdrop-blur-sm">
+          <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+            <div className="text-cyan-400 font-mono text-xl">VS.bio</div>
+            <div className="flex space-x-6">
+              <a href="https://github.com/vseetha7" className="text-white hover:text-cyan-400 transition-colors">
+                <Github className="w-6 h-6" />
               </a>
-            ))}
+              <a href="#" className="text-white hover:text-cyan-400 transition-colors">
+                <Linkedin className="w-6 h-6" />
+              </a>
+              <a href="#" className="text-white hover:text-cyan-400 transition-colors">
+                <Mail className="w-6 h-6" />
+              </a>
+            </div>
+          </div>
+        </nav>
+
+        {/* Hero Section */}
+        <div className="min-h-screen flex items-center justify-center px-4 relative">
+          <div className="text-center z-10">
+            <h1 className="text-6xl font-bold mb-6">
+              <span className="text-white">Hi, I'm </span>
+              <span className="bg-gradient-to-r from-cyan-400 via-purple-400 to-blue-400 text-transparent bg-clip-text">
+                Vignesh
+              </span>
+            </h1>
+            <div className="flex items-center justify-center space-x-4 mb-8">
+              <Dna className="w-6 h-6 text-green-400" />
+              <span className="text-gray-300">|</span>
+              <Circuit className="w-6 h-6 text-blue-400" />
+              <span className="text-gray-300">|</span>
+              <Gamepad2 className="w-6 h-6 text-purple-400" />
+            </div>
+            <p className="text-xl text-gray-300 mb-8 font-mono">
+              Biotech Student | Tech Enthusiast | Gamer
+            </p>
+            <div className="group relative">
+              <button className="px-8 py-3 bg-transparent border-2 border-cyan-400 text-cyan-400 rounded-lg
+                               hover:bg-cyan-400 hover:text-gray-900 transition-all duration-300
+                               relative z-10">
+                Explore My World
+              </button>
+              <div className="absolute inset-0 bg-cyan-400/20 blur-lg group-hover:blur-xl transition-all duration-300" />
+            </div>
           </div>
         </div>
-      </nav>
+
+        {/* Animated Cursor Trail */}
+        <div
+          className="pointer-events-none fixed w-4 h-4 rounded-full bg-cyan-400/50 blur-sm"
+          style={{
+            left: cursorPos.x,
+            top: cursorPos.y,
+            transform: 'translate(-50%, -50%)',
+            transition: 'all 0.1s ease-out',
+          }}
+        />
+      </div>
     </div>
   );
 };

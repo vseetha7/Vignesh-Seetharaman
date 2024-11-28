@@ -100,6 +100,7 @@ export default function PortfolioApp() {
 
   const pages = {
     home: <HomePage />,
+    about: <AboutPage />,
     tech: <TechnologyPage />,
     stocks: <StocksPage />,
     gaming: <GamingPage />,
@@ -154,6 +155,135 @@ const HomePage = () => (
       <p className="text-xl text-gray-300 mb-8 font-mono">
         Biotech Student | Tech Enthusiast | Gamer
       </p>
+    </div>
+  </div>
+);
+
+const AboutPage = () => (
+  <div className="max-w-6xl mx-auto space-y-8">
+    {/* Hero Section */}
+    <div className="text-center mb-12">
+      <h1 className="text-4xl font-bold text-white mb-4">About Me</h1>
+      <p className="text-gray-300 font-mono max-w-2xl mx-auto">
+        Biotech Student | Tech Enthusiast | Life-Long Learner
+      </p>
+    </div>
+
+    <div className="grid gap-8">
+      <ContentCard title="Academic Journey">
+        <div className="space-y-4 text-gray-300 font-mono">
+          <p className="leading-relaxed">
+            As a Biotechnology student at Arizona State University, I've always been fascinated by the intersection of biology and technology.
+            My academic journey has been driven by a deep curiosity about how we can leverage technology to solve complex biological problems.
+          </p>
+          <div className="bg-cyan-900/20 p-4 rounded-lg border border-cyan-400/20">
+            <h3 className="text-cyan-400 mb-2">Research Interests</h3>
+            <ul className="space-y-2">
+              <li className="flex items-center space-x-2">
+                <div className="w-2 h-2 bg-green-400 rounded-full" />
+                <span>Bioinformatics & Computational Biology</span>
+              </li>
+              <li className="flex items-center space-x-2">
+                <div className="w-2 h-2 bg-purple-400 rounded-full" />
+                <span>Machine Learning in Drug Discovery</span>
+              </li>
+              <li className="flex items-center space-x-2">
+                <div className="w-2 h-2 bg-blue-400 rounded-full" />
+                <span>Genomics Data Analysis</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </ContentCard>
+
+      <ContentCard title="Professional Aspirations">
+        <div className="space-y-4 text-gray-300 font-mono">
+          <p className="leading-relaxed">
+            My goal is to bridge the gap between biotechnology and software engineering. I believe that the future of healthcare
+            and biological research lies in our ability to process and analyze vast amounts of data efficiently.
+          </p>
+          <div className="grid md:grid-cols-2 gap-4">
+            <div className="bg-cyan-900/20 p-4 rounded-lg border border-cyan-400/20">
+              <h3 className="text-cyan-400 mb-2">Short-term Goals</h3>
+              <ul className="space-y-2">
+                <li>• Complete advanced bioinformatics projects</li>
+                <li>• Master data visualization techniques</li>
+                <li>• Contribute to open-source biotech tools</li>
+              </ul>
+            </div>
+            <div className="bg-purple-900/20 p-4 rounded-lg border border-purple-400/20">
+              <h3 className="text-purple-400 mb-2">Long-term Vision</h3>
+              <ul className="space-y-2">
+                <li>• Develop innovative biotech software solutions</li>
+                <li>• Lead research in computational biology</li>
+                <li>• Create accessible biotech visualization tools</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </ContentCard>
+
+      <ContentCard title="Personal Growth">
+        <div className="space-y-6 text-gray-300 font-mono">
+          <p className="leading-relaxed">
+            Beyond academics and career goals, I'm committed to continuous personal development. I believe in maintaining
+            a balance between technical skills and soft skills, while nurturing my diverse interests.
+          </p>
+
+          <div className="grid md:grid-cols-3 gap-4">
+            <div className="bg-gray-800/50 p-4 rounded-lg">
+              <h3 className="text-cyan-400 mb-2">Life Philosophy</h3>
+              <p>"The beauty of biotechnology lies in its ability to improve lives. The challenge lies in making it accessible to everyone."</p>
+            </div>
+
+            <div className="bg-gray-800/50 p-4 rounded-lg">
+              <h3 className="text-purple-400 mb-2">Values</h3>
+              <ul className="space-y-1">
+                <li>• Continuous Learning</li>
+                <li>• Innovation & Creativity</li>
+                <li>• Ethical Research</li>
+                <li>• Knowledge Sharing</li>
+              </ul>
+            </div>
+
+            <div className="bg-gray-800/50 p-4 rounded-lg">
+              <h3 className="text-green-400 mb-2">Hobbies</h3>
+              <ul className="space-y-1">
+                <li>• Chess & Strategy Games</li>
+                <li>• Reading Scientific Papers</li>
+                <li>• Building PCs</li>
+                <li>• Anime & Gaming</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </ContentCard>
+
+      <ContentCard title="Community Engagement">
+        <div className="space-y-4 text-gray-300 font-mono">
+          <p className="leading-relaxed">
+            I strongly believe in giving back to the community and helping others learn. Whether it's through tutoring,
+            mentoring, or sharing knowledge online, I aim to make a positive impact.
+          </p>
+          <div className="bg-gradient-to-r from-cyan-900/20 to-purple-900/20 p-4 rounded-lg border border-cyan-400/20">
+            <h3 className="text-white font-semibold mb-2">Current Initiatives</h3>
+            <ul className="space-y-2">
+              <li className="flex items-center space-x-2">
+                <div className="w-2 h-2 bg-cyan-400 rounded-full" />
+                <span>Biotechnology Student Mentoring Program</span>
+              </li>
+              <li className="flex items-center space-x-2">
+                <div className="w-2 h-2 bg-purple-400 rounded-full" />
+                <span>Online Programming Tutorials</span>
+              </li>
+              <li className="flex items-center space-x-2">
+                <div className="w-2 h-2 bg-green-400 rounded-full" />
+                <span>Research Paper Discussion Groups</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </ContentCard>
     </div>
   </div>
 );

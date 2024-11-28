@@ -72,13 +72,11 @@ export default function PortfolioApp() {
               <NavButton Icon={Tv} text="Anime" onClick={() => setCurrentPage('anime')} active={currentPage === 'anime'} />
             </div>
             <div className="flex space-x-6">
-              <a href="https://github.com/vseetha7" className="text-white hover:text-cyan-400 transition-colors">
-                <Github className="w-6 h-6" />
-              </a>
+
               <a href="#" className="text-white hover:text-cyan-400 transition-colors">
                 <Linkedin className="w-6 h-6" />
               </a>
-              <a href="#" className="text-white hover:text-cyan-400 transition-colors">
+              <a href="vseetha7@asu.edu" className="text-white hover:text-cyan-400 transition-colors">
                 <Mail className="w-6 h-6" />
               </a>
             </div>
@@ -133,7 +131,7 @@ const HomePage = () => (
       {/* Profile Photo Section */}
       <div className="relative w-48 h-48 mx-auto mb-8">
         <img
-          src="/profile.jpg"  // Replace with your actual image path
+          src="/Vignesh_img.jpg"  // Replace with your actual image path
           alt="Vignesh Seetharaman"
           className="rounded-full w-48 h-48 object-cover border-4 border-cyan-400/30 shadow-lg shadow-cyan-400/20"
         />

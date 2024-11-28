@@ -192,7 +192,182 @@ const TechnologyPage = () => (
       </div>
     </ContentCard>
 
+    {/* Skills Grid */}
+    <div className="grid md:grid-cols-2 gap-6">
+      {/* Technical Skills */}
+      <ContentCard title="Technical Arsenal">
+        <div className="space-y-4">
+          <div>
+            <h3 className="text-cyan-400 font-mono mb-2">Frontend Development</h3>
+            <ul className="space-y-3 text-gray-300 font-mono">
+              <li className="flex items-center space-x-2">
+                <div className="w-2 h-2 bg-cyan-400 rounded-full" />
+                <span>React.js & Next.js</span>
+              </li>
+              <li className="flex items-center space-x-2">
+                <div className="w-2 h-2 bg-purple-400 rounded-full" />
+                <span>Tailwind CSS & Styled Components</span>
+              </li>
+              <li className="flex items-center space-x-2">
+                <div className="w-2 h-2 bg-blue-400 rounded-full" />
+                <span>TypeScript & JavaScript</span>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-cyan-400 font-mono mb-2">Backend Development</h3>
+            <ul className="space-y-3 text-gray-300 font-mono">
+              <li className="flex items-center space-x-2">
+                <div className="w-2 h-2 bg-green-400 rounded-full" />
+                <span>Node.js & Express</span>
+              </li>
+              <li className="flex items-center space-x-2">
+                <div className="w-2 h-2 bg-yellow-400 rounded-full" />
+                <span>Python & FastAPI</span>
+              </li>
+              <li className="flex items-center space-x-2">
+                <div className="w-2 h-2 bg-red-400 rounded-full" />
+                <span>MongoDB & PostgreSQL</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </ContentCard>
 
+      {/* Hardware Enthusiasm */}
+      <ContentCard title="Hardware Geek Corner">
+        <div className="space-y-4 text-gray-300 font-mono">
+          <div className="bg-cyan-900/20 p-4 rounded-lg border border-cyan-400/20">
+            <h3 className="text-cyan-400 mb-2">Current Setup</h3>
+            <ul className="space-y-2">
+              <li className="flex items-center space-x-2">
+                <div className="w-2 h-2 bg-blue-400 rounded-full" />
+                <span>Custom-built PC with Ryzen 9 5900X</span>
+              </li>
+              <li className="flex items-center space-x-2">
+                <div className="w-2 h-2 bg-green-400 rounded-full" />
+                <span>32GB DDR4 RAM @ 3600MHz</span>
+              </li>
+              <li className="flex items-center space-x-2">
+                <div className="w-2 h-2 bg-purple-400 rounded-full" />
+                <span>RTX 3080 for ML workloads</span>
+              </li>
+            </ul>
+          </div>
+          <div className="bg-cyan-900/20 p-4 rounded-lg border border-cyan-400/20">
+            <h3 className="text-cyan-400 mb-2">Areas of Interest</h3>
+            <ul className="space-y-2">
+              <li className="flex items-center space-x-2">
+                <div className="w-2 h-2 bg-red-400 rounded-full" />
+                <span>Mobile SoC Architecture</span>
+              </li>
+              <li className="flex items-center space-x-2">
+                <div className="w-2 h-2 bg-yellow-400 rounded-full" />
+                <span>Custom Mechanical Keyboards</span>
+              </li>
+              <li className="flex items-center space-x-2">
+                <div className="w-2 h-2 bg-cyan-400 rounded-full" />
+                <span>Display Technology (OLED vs Mini-LED)</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </ContentCard>
+    </div>
+
+    {/* Learning Journey */}
+    <ContentCard title="Current Learning Focus">
+      <div className="grid md:grid-cols-2 gap-4">
+        <div className="bg-cyan-900/20 p-4 rounded-lg border border-cyan-400/20">
+          <h3 className="text-cyan-400 font-mono mb-2">Learning Goals</h3>
+          <ul className="space-y-2 text-gray-300 font-mono">
+            <li className="flex items-center space-x-2">
+              <div className="w-2 h-2 bg-green-400 rounded-full" />
+              <span>Three.js for 3D Web Applications</span>
+            </li>
+            <li className="flex items-center space-x-2">
+              <div className="w-2 h-2 bg-blue-400 rounded-full" />
+              <span>WebAssembly for Performance</span>
+            </li>
+            <li className="flex items-center space-x-2">
+              <div className="w-2 h-2 bg-purple-400 rounded-full" />
+              <span>Rust for System Programming</span>
+            </li>
+          </ul>
+        </div>
+        <div className="bg-cyan-900/20 p-4 rounded-lg border border-cyan-400/20">
+          <h3 className="text-cyan-400 font-mono mb-2">Future Aspirations</h3>
+          <ul className="space-y-2 text-gray-300 font-mono">
+            <li className="flex items-center space-x-2">
+              <div className="w-2 h-2 bg-yellow-400 rounded-full" />
+              <span>Contributing to Open Source</span>
+            </li>
+            <li className="flex items-center space-x-2">
+              <div className="w-2 h-2 bg-red-400 rounded-full" />
+              <span>Building AR/VR Applications</span>
+            </li>
+            <li className="flex items-center space-x-2">
+              <div className="w-2 h-2 bg-cyan-400 rounded-full" />
+              <span>Machine Learning Integration</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </ContentCard>
+  </div>
+);
+
+const StocksPage = () => (
+  <div className="max-w-6xl mx-auto grid gap-6 md:grid-cols-2">
+    <ContentCard title="Trading Strategy">
+      <p className="text-gray-300 font-mono">
+        Long-term value investing with focus on fundamentals and market trends.
+        Specializing in technology and biotech sectors.
+      </p>
+    </ContentCard>
+    <ContentCard title="Market Analysis">
+      <p className="text-gray-300 font-mono">
+        Technical and fundamental analysis of stocks and market sectors.
+        Emphasis on risk management and portfolio diversification.
+      </p>
+    </ContentCard>
+  </div>
+);
+
+const GamingPage = () => (
+  <div className="max-w-6xl mx-auto grid gap-6 md:grid-cols-2">
+    <ContentCard title="Roblox Favorites">
+      <ul className="space-y-3 text-gray-300 font-mono">
+        <li className="flex items-center space-x-2">
+          <div className="w-2 h-2 bg-pink-400 rounded-full" />
+          <span>Adopt Me</span>
+        </li>
+        <li className="flex items-center space-x-2">
+          <div className="w-2 h-2 bg-purple-400 rounded-full" />
+          <span>Blox Fruits</span>
+        </li>
+        <li className="flex items-center space-x-2">
+          <div className="w-2 h-2 bg-blue-400 rounded-full" />
+          <span>Pet Simulator X</span>
+        </li>
+      </ul>
+    </ContentCard>
+    <ContentCard title="Achievements">
+      <ul className="space-y-3 text-gray-300 font-mono">
+        <li className="flex items-center space-x-2">
+          <div className="w-2 h-2 bg-yellow-400 rounded-full" />
+          <span>Top Rankings</span>
+        </li>
+        <li className="flex items-center space-x-2">
+          <div className="w-2 h-2 bg-green-400 rounded-full" />
+          <span>Rare Collections</span>
+        </li>
+        <li className="flex items-center space-x-2">
+          <div className="w-2 h-2 bg-red-400 rounded-full" />
+          <span>Special Events</span>
+        </li>
+      </ul>
+    </ContentCard>
   </div>
 );
 

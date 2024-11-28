@@ -526,11 +526,33 @@ const AnimePage = () => (
               <span className="text-white font-semibold">Seasonal Picks</span>
             </div>
             <ul className="space-y-3 text-gray-300 font-mono">
-              <li>• Solo Leveling</li>
-              <li>• Classroom of the Elite S3</li>
-              <li>• Demon Slayer: Hashira Training</li>
-              <li>• Mushoku Tensei S2 Part 2</li>
-              <li>• Black Clover: Sword of the Wizard King</li>
+            <li>• Let This Grieving Soul Retire</li>
+<li>• Re:ZERO -Starting Life in Another World- Season 3</li>
+<li>• I'll Become a Villainess Who Goes Down in History</li>
+<li>• Tying the Knot with an Amagami Sister</li>
+<li>• Blue Box</li>
+<li>• 365 Days to the Wedding</li>
+<li>• Dandadan</li>
+<li>• Loner Life in Another World</li>
+<li>• Bleach: Thousand-Year Blood War - The Conflict</li>
+<li>• Is It Wrong to Try to Pick Up Girls in a Dungeon? V</li>
+<li>• Sword Art Online Alternative: Gun Gale Online II</li>
+<li>• Orb: On the Movements of the Earth</li>
+<li>• Blue Lock Season 2</li>
+<li>• Tower of God Season 2: Workshop Battle</li>
+<li>• You are Ms. Servant</li>
+<li>• Ranma ½ (2024)</li>
+<li>• Blue Exorcist: Beyond the Snow Saga</li>
+<li>• Yakuza Fiancé: Raise wa Tanin ga Ii</li>
+<li>• The Most Notorious "Talker" Runs the World's Greatest Clan</li>
+<li>• Seirei Gensouki: Spirit Chronicles Season 2</li>
+<li>• The Do-Over Damsel Conquers The Dragon Emperor</li>
+<li>• Dragon Ball Daima</li>
+<li>• Shangri-La Frontier Season 2</li>
+<li>• Demon Lord 2099</li>
+<li>• Arifureta: From Commonplace to World's Strongest Season 3</li>
+<li>• Uzumaki: Spiral into Horror</li>
+<li>• As a Reincarnated Aristocrat, I'll Use My Appraisal Skill to Rise in the World Season 2</li>
             </ul>
           </div>
         </div>
@@ -602,7 +624,6 @@ const AnimePage = () => (
             <p className="text-gray-300 font-mono">Looking forward to potential adaptations of:</p>
             <ul className="space-y-2 text-gray-300 font-mono mt-2">
               <li>• Solo Leveling Season 2</li>
-              <li>• Dandadan</li>
               <li>• Hell's Paradise Season 2</li>
             </ul>
           </div>

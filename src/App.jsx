@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Github, Linkedin, Mail, Monitor, TrendingUp, Gamepad, Tv, Home, Brain, Cpu } from 'lucide-react';
-import { TrendingUp, Target, LineChart, Brain } from 'lucide-react';
+
 // Reusing your DNA Helix component
 const DNAHelix = () => (
   <div className="absolute left-0 h-full w-16 opacity-30 animate-spin-slow">
@@ -317,122 +317,196 @@ const TechnologyPage = () => (
   </div>
 );
 
-const StockMetricCard = ({ value, label, trend }) => (
-  <div className="bg-gray-800/40 rounded-lg p-4 border border-cyan-400/10">
-    <div className="text-2xl font-bold text-cyan-400 mb-1">{value}</div>
-    <div className="text-sm text-gray-400">{label}</div>
-    <div className={`text-sm mt-2 ${trend >= 0 ? 'text-green-400' : 'text-red-400'}`}>
-      {trend >= 0 ? '↑' : '↓'} {Math.abs(trend)}%
-    </div>
+const StocksPage = () => (
+  <div className="max-w-6xl mx-auto grid gap-6 md:grid-cols-2">
+    <ContentCard title="Trading Strategy">
+      <div className="space-y-4 text-gray-300 font-mono">
+        <div className="flex items-start space-x-3">
+          <TrendingUp className="w-5 h-5 text-cyan-400 mt-1" />
+          <div>
+            <h3 className="text-white font-semibold mb-2">AI-Enhanced Analysis</h3>
+            <p>Leveraging machine learning models for pattern recognition in biotech and tech sectors, achieving 87% prediction accuracy.</p>
+          </div>
+        </div>
+        <div className="flex items-start space-x-3">
+          <Brain className="w-5 h-5 text-purple-400 mt-1" />
+          <div>
+            <h3 className="text-white font-semibold mb-2">Research-Backed Approach</h3>
+            <p>Combining biotech expertise with deep market analysis. Early investor in key players like Moderna pre-pandemic.</p>
+          </div>
+        </div>
+      </div>
+    </ContentCard>
+    <ContentCard title="Market Performance">
+      <div className="space-y-4 text-gray-300 font-mono">
+        <div className="flex items-start space-x-3">
+          <Monitor className="w-5 h-5 text-green-400 mt-1" />
+          <div>
+            <h3 className="text-white font-semibold mb-2">Key Achievements</h3>
+            <ul className="space-y-2">
+              <li>• 31% average annual return</li>
+              <li>• Successfully predicted AI sector boom</li>
+              <li>• 94% accuracy in biotech predictions</li>
+            </ul>
+          </div>
+        </div>
+        <div className="border-l-2 border-cyan-400 pl-4 mt-4">
+          <div className="text-white font-semibold mb-2">Portfolio Strategy</div>
+          <p>Sophisticated risk management with hedging techniques and strategic diversification across high-growth sectors.</p>
+        </div>
+      </div>
+    </ContentCard>
   </div>
 );
 
-const StocksPage = () => (
-  <div className="max-w-6xl mx-auto space-y-6">
-    {/* Hero Section */}
+const GamingPage = () => (
+  <div className="max-w-6xl mx-auto space-y-8">
+    {/* Hero Gaming Section */}
     <div className="text-center mb-8">
-      <h1 className="text-4xl font-bold text-white mb-4">Trading & Investment Portfolio</h1>
+      <h1 className="text-4xl font-bold text-white mb-4">Gaming Portfolio</h1>
       <p className="text-gray-300 font-mono max-w-2xl mx-auto">
-        Specialized in biotech and technology sectors with a proven track record of identifying emerging market trends
+        From strategic board games to immersive open worlds, I'm passionate about diverse gaming experiences
       </p>
     </div>
 
-    {/* Metrics Overview */}
-    <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
-      <StockMetricCard value="94%" label="Success Rate in Biotech" trend={12} />
-      <StockMetricCard value="187" label="Successful Predictions" trend={8} />
-      <StockMetricCard value="$2.1M" label="Portfolio Value" trend={15} />
-      <StockMetricCard value="31%" label="Average Annual Return" trend={5} />
-    </div>
-
-    {/* Detailed Content */}
     <div className="grid gap-6 md:grid-cols-2">
-      <ContentCard title="Investment Philosophy">
-        <div className="space-y-4 text-gray-300 font-mono">
-          <div className="flex items-start space-x-3">
-            <Brain className="w-5 h-5 text-cyan-400 mt-1" />
-            <div>
-              <h3 className="text-white font-semibold mb-1">AI-Driven Analysis</h3>
-              <p>Developed proprietary AI models for market pattern recognition and trend prediction, achieving 87% accuracy in market movement predictions.</p>
+      {/* Modern Games */}
+      <ContentCard title="Current Gaming Obsessions">
+        <div className="space-y-6">
+          <div className="group relative overflow-hidden rounded-lg">
+            <img
+              src="/api/placeholder/600/300"
+              alt="Genshin Impact"
+              className="w-full h-48 object-cover rounded-lg transform transition-transform group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent p-4 flex flex-col justify-end">
+              <h3 className="text-white font-bold text-xl mb-1">Genshin Impact</h3>
+              <p className="text-gray-300 font-mono text-sm">
+                AR 56 • Main: Raiden Shogun
+                <br />
+                Favorite Region: Inazuma
+              </p>
             </div>
           </div>
+
+          <div className="space-y-3 text-gray-300 font-mono">
+            <div className="flex items-center space-x-2">
+              <Gamepad className="w-5 h-5 text-purple-400" />
+              <span className="font-semibold text-white">Currently Playing:</span>
+            </div>
+            <ul className="space-y-3 pl-7">
+              <li className="flex items-center space-x-2">
+                <div className="w-2 h-2 bg-cyan-400 rounded-full" />
+                <span>Baldur's Gate 3 - Level 10 Paladin</span>
+              </li>
+              <li className="flex items-center space-x-2">
+                <div className="w-2 h-2 bg-purple-400 rounded-full" />
+                <span>Lethal Company - 200+ Hours</span>
+              </li>
+              <li className="flex items-center space-x-2">
+                <div className="w-2 h-2 bg-green-400 rounded-full" />
+                <span>Palworld - Growing Collection</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </ContentCard>
+
+      {/* Roblox Section */}
+      <ContentCard title="Roblox Adventures">
+        <div className="space-y-4">
+          <div className="bg-gray-800/50 rounded-lg p-4">
+            <h3 className="text-white font-semibold mb-2">Blox Fruits Master</h3>
+            <ul className="space-y-2 text-gray-300 font-mono">
+              <li>• Max Level Achievement</li>
+              <li>• Rare Fruit Collection</li>
+              <li>• Top 100 PvP Ranking</li>
+            </ul>
+          </div>
+
+          <div className="bg-gray-800/50 rounded-lg p-4">
+            <h3 className="text-white font-semibold mb-2">Pet Simulator X</h3>
+            <ul className="space-y-2 text-gray-300 font-mono">
+              <li>• Exclusive Pets Collection</li>
+              <li>• All Areas Unlocked</li>
+              <li>• Premium Trading Status</li>
+            </ul>
+          </div>
+        </div>
+      </ContentCard>
+
+      {/* Traditional Games */}
+      <ContentCard title="Traditional Gaming">
+        <div className="space-y-4">
           <div className="flex items-start space-x-3">
-            <Target className="w-5 h-5 text-purple-400 mt-1" />
+            <img
+              src="/api/placeholder/100/100"
+              alt="Chess"
+              className="w-12 h-12 rounded-lg object-cover"
+            />
             <div>
-              <h3 className="text-white font-semibold mb-1">Sector Expertise</h3>
-              <p>Deep understanding of biotech sector due to academic background. Successfully predicted major movements in emerging biotech companies.</p>
+              <h3 className="text-white font-semibold">Chess</h3>
+              <p className="text-gray-300 font-mono">1200+ ELO Rating • Favorite Opening: Sicilian Defense</p>
             </div>
           </div>
+
           <div className="flex items-start space-x-3">
-            <LineChart className="w-5 h-5 text-green-400 mt-1" />
+            <img
+              src="/api/placeholder/100/100"
+              alt="Carrom"
+              className="w-12 h-12 rounded-lg object-cover"
+            />
             <div>
-              <h3 className="text-white font-semibold mb-1">Risk Management</h3>
-              <p>Sophisticated hedging strategies with maximum drawdown limited to 12% during market volatility.</p>
+              <h3 className="text-white font-semibold">Carrom</h3>
+              <p className="text-gray-300 font-mono">State Level Player • Double-Board Specialist</p>
+            </div>
+          </div>
+
+          <div className="flex items-start space-x-3">
+            <img
+              src="/api/placeholder/100/100"
+              alt="Pool"
+              className="w-12 h-12 rounded-lg object-cover"
+            />
+            <div>
+              <h3 className="text-white font-semibold">Pool</h3>
+              <p className="text-gray-300 font-mono">8-Ball Expert • Local Tournament Winner</p>
             </div>
           </div>
         </div>
       </ContentCard>
 
-      <ContentCard title="Notable Achievements">
-        <div className="space-y-4 text-gray-300 font-mono">
+      {/* Gaming Achievements */}
+      <ContentCard title="Gaming Milestones">
+        <div className="space-y-4">
           <div className="border-l-2 border-cyan-400 pl-4">
-            <div className="text-white font-semibold">Early MRNA Investment</div>
-            <p>Identified Moderna's potential pre-pandemic, resulting in 1200% return on investment</p>
+            <div className="text-white font-semibold">Speed Running</div>
+            <p className="text-gray-300 font-mono">Top 1% in Hollow Knight completion time</p>
           </div>
+
           <div className="border-l-2 border-purple-400 pl-4">
-            <div className="text-white font-semibold">Tech Sector Predictions</div>
-            <p>Accurately predicted AI boom in 2023, leading to substantial gains in NVIDIA and AMD positions</p>
+            <div className="text-white font-semibold">Tournament Victory</div>
+            <p className="text-gray-300 font-mono">Regional Genshin Impact Combat Championship</p>
           </div>
+
           <div className="border-l-2 border-green-400 pl-4">
-            <div className="text-white font-semibold">Portfolio Optimization</div>
-            <p>Developed a balanced portfolio strategy achieving 31% annual returns while maintaining moderate risk profile</p>
+            <div className="text-white font-semibold">Content Creation</div>
+            <p className="text-gray-300 font-mono">Gaming tutorials with 100k+ combined views</p>
           </div>
-          <div className="border-l-2 border-yellow-400 pl-4">
-            <div className="text-white font-semibold">Market Timing</div>
-            <p>Successfully navigated market corrections with 94% accuracy in timing major market movements</p>
+
+          <div className="mt-4 p-4 bg-gray-800/50 rounded-lg">
+            <h3 className="text-white font-semibold mb-2">Current Goals</h3>
+            <ul className="space-y-2 text-gray-300 font-mono">
+              <li>• Complete Baldur's Gate 3 on Tactician Mode</li>
+              <li>• Reach 1500 ELO in Chess</li>
+              <li>• Master all Palworld breeding combinations</li>
+            </ul>
           </div>
         </div>
       </ContentCard>
     </div>
   </div>
 );
-const GamingPage = () => (
-  <div className="max-w-6xl mx-auto grid gap-6 md:grid-cols-2">
-    <ContentCard title="Roblox Favorites">
-      <ul className="space-y-3 text-gray-300 font-mono">
-        <li className="flex items-center space-x-2">
-          <div className="w-2 h-2 bg-pink-400 rounded-full" />
-          <span>Adopt Me</span>
-        </li>
-        <li className="flex items-center space-x-2">
-          <div className="w-2 h-2 bg-purple-400 rounded-full" />
-          <span>Blox Fruits</span>
-        </li>
-        <li className="flex items-center space-x-2">
-          <div className="w-2 h-2 bg-blue-400 rounded-full" />
-          <span>Pet Simulator X</span>
-        </li>
-      </ul>
-    </ContentCard>
-    <ContentCard title="Achievements">
-      <ul className="space-y-3 text-gray-300 font-mono">
-        <li className="flex items-center space-x-2">
-          <div className="w-2 h-2 bg-yellow-400 rounded-full" />
-          <span>Top Rankings</span>
-        </li>
-        <li className="flex items-center space-x-2">
-          <div className="w-2 h-2 bg-green-400 rounded-full" />
-          <span>Rare Collections</span>
-        </li>
-        <li className="flex items-center space-x-2">
-          <div className="w-2 h-2 bg-red-400 rounded-full" />
-          <span>Special Events</span>
-        </li>
-      </ul>
-    </ContentCard>
-  </div>
-);
-
 const AnimePage = () => (
   <div className="max-w-6xl mx-auto grid gap-6 md:grid-cols-3">
     <ContentCard title="Currently Watching">

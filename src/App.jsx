@@ -128,12 +128,13 @@ const NavButton = ({ Icon, text, onClick, active }) => (
 const HomePage = () => (
   <div className="min-h-[calc(100vh-5rem)] flex items-center justify-center">
     <div className="text-center space-y-8">
-      {/* Profile Photo Section */}
+      {/* Updated Profile Photo Section with correct image path */}
       <div className="relative w-48 h-48 mx-auto mb-8">
+        <div className="absolute inset-0 rounded-full bg-gradient-to-r from-cyan-400/30 to-purple-400/30 animate-pulse" />
         <img
-          src="/public/Vignesh_img.jpg"  // Replace with your actual image path
+          src="/Vignesh_img.jpg"
           alt="Vignesh Seetharaman"
-          className="rounded-full w-48 h-48 object-cover border-4 border-cyan-400/30 shadow-lg shadow-cyan-400/20"
+          className="relative z-10 rounded-full w-48 h-48 object-cover border-4 border-cyan-400/30 shadow-lg shadow-cyan-400/20"
         />
         <div className="absolute inset-0 rounded-full bg-gradient-to-r from-cyan-400/10 via-purple-400/10 to-blue-400/10 animate-pulse" />
       </div>

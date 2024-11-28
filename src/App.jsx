@@ -597,6 +597,14 @@ const AnimePage = () => (
 
       <ContentCard title="Future Watchlist">
         <div className="space-y-4">
+        <div className="mt-4 p-4 bg-gradient-to-r from-purple-900/50 to-blue-900/50 rounded-lg">
+          <h3 className="text-white font-semibold mb-2">Most Anticipated</h3>
+          <p className="text-gray-300 font-mono">Looking forward to potential adaptations of:</p>
+          <ul className="space-y-2 text-gray-300 font-mono mt-2">
+            <li>• Solo Leveling Season 2</li>
+            <li>• Hell's Paradise Season 2</li>
+          </ul>
+        </div>
           <div className="bg-gray-800/50 rounded-lg p-4">
             <h3 className="text-white font-semibold mb-2">Upcoming 2025</h3>
             <ul className="space-y-2 text-gray-300 font-mono">
@@ -619,14 +627,7 @@ const AnimePage = () => (
             </ul>
           </div>
 
-          <div className="mt-4 p-4 bg-gradient-to-r from-purple-900/50 to-blue-900/50 rounded-lg">
-            <h3 className="text-white font-semibold mb-2">Most Anticipated</h3>
-            <p className="text-gray-300 font-mono">Looking forward to potential adaptations of:</p>
-            <ul className="space-y-2 text-gray-300 font-mono mt-2">
-              <li>• Solo Leveling Season 2</li>
-              <li>• Hell's Paradise Season 2</li>
-            </ul>
-          </div>
+
         </div>
       </ContentCard>
     </div>

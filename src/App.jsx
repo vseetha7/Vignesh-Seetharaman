@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Github, Linkedin, Mail, Monitor, TrendingUp, Gamepad, Tv, Home, Brain, Cpu } from 'lucide-react';
-
+import VigneshImg from './assets/Vignesh_img.jpg';
 // Reusing your DNA Helix component
 const DNAHelix = () => (
   <div className="absolute left-0 h-full w-16 opacity-30 animate-spin-slow">
@@ -128,17 +128,18 @@ const NavButton = ({ Icon, text, onClick, active }) => (
 const HomePage = () => (
   <div className="min-h-[calc(100vh-5rem)] flex items-center justify-center">
     <div className="text-center space-y-8">
-      {/* Updated Profile Photo Section with correct image path */}
       <div className="relative w-48 h-48 mx-auto mb-8">
         <div className="absolute inset-0 rounded-full bg-gradient-to-r from-cyan-400/30 to-purple-400/30 animate-pulse" />
         <img
-          src="../public/Vignesh_img.jpg"
+          src={VigneshImg}
           alt="Vignesh Seetharaman"
           className="relative z-10 rounded-full w-48 h-48 object-cover border-4 border-cyan-400/30 shadow-lg shadow-cyan-400/20"
         />
         <div className="absolute inset-0 rounded-full bg-gradient-to-r from-cyan-400/10 via-purple-400/10 to-blue-400/10 animate-pulse" />
       </div>
 
+
+      {/* Rest of the component remains the same */}
       <h1 className="text-6xl font-bold mb-6">
         <span className="text-white">Hi, I'm </span>
         <span className="bg-gradient-to-r from-cyan-400 via-purple-400 to-blue-400 text-transparent bg-clip-text">
@@ -156,13 +157,6 @@ const HomePage = () => (
         Biotech Student | Tech Enthusiast | Gamer
       </p>
     </div>
-  </div>
-);
-
-const ContentCard = ({ title, children }) => (
-  <div className="bg-gray-800/50 backdrop-blur-sm rounded-lg p-6 border border-cyan-400/20 shadow-lg shadow-cyan-400/10">
-    <h2 className="text-2xl font-bold text-cyan-400 mb-4 font-mono">{title}</h2>
-    {children}
   </div>
 );
 

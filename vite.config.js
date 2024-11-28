@@ -3,5 +3,5 @@ import react from '@vite/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
-  base: '/',
+  base: '/Vignesh-Seetharaman/'
 })

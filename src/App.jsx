@@ -574,25 +574,67 @@ const AnimePage = () => (
           <div className="border-l-2 border-blue-400 pl-4">
             <h3 className="text-white font-semibold mb-2">Modern Classics</h3>
             <ul className="space-y-2">
-              <li>• Jujutsu Kaisen</li>
-              <li>• Demon Slayer</li>
-              <li>• Chainsaw Man</li>
-              <li>• Spy x Family</li>
-              <li>• My Hero Academia</li>
-            </ul>
-          </div>
-
-          <div className="border-l-2 border-cyan-400 pl-4">
-            <h3 className="text-white font-semibold mb-2">Long-Running Epics</h3>
-            <ul className="space-y-2">
-              <li>• One Piece</li>
-              <li>• Naruto Series</li>
-              <li>• Bleach</li>
-              <li>• Dragon Ball Series</li>
-              <li>• Hunter x Hunter</li>
-            </ul>
-          </div>
-        </div>
+            <li>• Attack on Titan</li>
+<li>• Death Note</li>
+<li>• Fullmetal Alchemist: Brotherhood</li>
+<li>• Steins;Gate</li>
+<li>• One Piece</li>
+<li>• Code Geass</li>
+<li>• Hunter x Hunter</li>
+<li>• Neon Genesis Evangelion</li>
+<li>• Cowboy Bebop</li>
+<li>• Monster</li>
+<li>• JoJo's Bizarre Adventure</li>
+<li>• Gintama</li>
+<li>• Made in Abyss</li>
+<li>• Demon Slayer</li>
+<li>• Jujutsu Kaisen</li>
+<li>• Mob Psycho 100</li>
+<li>• Naruto</li>
+<li>• Bleach</li>
+<li>• Dragon Ball Z</li>
+<li>• Your Name</li>
+<li>• Spirited Away</li>
+<li>• One Punch Man</li>
+<li>• My Hero Academia</li>
+<li>• Violet Evergarden</li>
+<li>• Tokyo Ghoul</li>
+<li>• Black Clover</li>
+<li>• The Promised Neverland</li>
+<li>• Vinland Saga</li>
+<li>• Parasyte</li>
+<li>• Haikyu!!</li>
+Watchlist:
+<li>• Re:ZERO Season 3</li>
+<li>• Blue Lock Season 2</li>
+<li>• Dragon Ball Daima</li>
+<li>• Bleach: Thousand-Year Blood War - The Conflict</li>
+<li>• Uzumaki: Spiral into Horror</li>
+<li>• Dandadan</li>
+<li>• Tower of God Season 2</li>
+<li>• Blue Exorcist: Beyond the Snow</li>
+<li>• Demon Slayer: Hashira Training Arc</li>
+<li>• Classroom of the Elite Season 3</li>
+<li>• Solo Leveling Season 2</li>
+<li>• Kaiju No. 8</li>
+<li>• Mushoku Tensei Season 2 Part 2</li>
+<li>• Chainsaw Man Season 2</li>
+<li>• One Punch Man Season 3</li>
+<li>• Hell's Paradise Season 2</li>
+<li>• Black Butler: Public School Arc</li>
+<li>• Tokyo Ghoul: Brotherhood</li>
+<li>• My Hero Academia: Final Season</li>
+<li>• Attack on Titan: Alternative</li>
+<li>• Shangri-La Frontier Season 2</li>
+<li>• Sword Art Online Alternative: GGO II</li>
+<li>• Ranma ½ (2024)</li>
+<li>• Blue Box</li>
+<li>• Demon Lord 2099</li>
+<li>• Orb: On the Movements of the Earth</li>
+<li>• Arifureta Season 3</li>
+<li>• DanMachi Season 5</li>
+<li>• Black Clover: Sword of the Wizard King</li>
+<li>• Spy x Family Season 3</li>
       </ContentCard>
 
       <ContentCard title="Future Watchlist">

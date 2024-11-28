@@ -440,37 +440,23 @@ const GamingPage = () => (
       <ContentCard title="Traditional Gaming">
         <div className="space-y-4">
           <div className="flex items-start space-x-3">
-            <img
-              src="/api/placeholder/100/100"
-              alt="Chess"
-              className="w-12 h-12 rounded-lg object-cover"
-            />
             <div>
-              <h3 className="text-white font-semibold">Chess</h3>
+              <h3 className="text-white font-semibold"> ♟️ Chess</h3>
               <p className="text-gray-300 font-mono">1200+ ELO Rating • Favorite Opening: Sicilian Defense</p>
             </div>
           </div>
 
           <div className="flex items-start space-x-3">
-            <img
-              src="/api/placeholder/100/100"
-              alt="Carrom"
-              className="w-12 h-12 rounded-lg object-cover"
-            />
+
             <div>
-              <h3 className="text-white font-semibold">Carrom</h3>
+              <h3 className="text-white font-semibold">🥏 Carrom</h3>
               <p className="text-gray-300 font-mono">State Level Player • Double-Board Specialist</p>
             </div>
           </div>
 
           <div className="flex items-start space-x-3">
-            <img
-              src="/api/placeholder/100/100"
-              alt="Pool"
-              className="w-12 h-12 rounded-lg object-cover"
-            />
             <div>
-              <h3 className="text-white font-semibold">Pool</h3>
+              <h3 className="text-white font-semibold">🎱 Pool</h3>
               <p className="text-gray-300 font-mono">8-Ball Expert • Local Tournament Winner</p>
             </div>
           </div>

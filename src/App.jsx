@@ -508,54 +508,106 @@ const GamingPage = () => (
   </div>
 );
 const AnimePage = () => (
-  <div className="max-w-6xl mx-auto grid gap-6 md:grid-cols-3">
-    <ContentCard title="Currently Watching">
-      <ul className="space-y-3 text-gray-300 font-mono">
-        <li className="flex items-center space-x-2">
-          <div className="w-2 h-2 bg-red-400 rounded-full" />
-          <span>Attack on Titan</span>
-        </li>
-        <li className="flex items-center space-x-2">
-          <div className="w-2 h-2 bg-orange-400 rounded-full" />
-          <span>Demon Slayer</span>
-        </li>
-        <li className="flex items-center space-x-2">
-          <div className="w-2 h-2 bg-blue-400 rounded-full" />
-          <span>Jujutsu Kaisen</span>
-        </li>
-      </ul>
-    </ContentCard>
-    <ContentCard title="All-Time Favorites">
-      <ul className="space-y-3 text-gray-300 font-mono">
-        <li className="flex items-center space-x-2">
-          <div className="w-2 h-2 bg-purple-400 rounded-full" />
-          <span>Death Note</span>
-        </li>
-        <li className="flex items-center space-x-2">
-          <div className="w-2 h-2 bg-yellow-400 rounded-full" />
-          <span>Full Metal Alchemist</span>
-        </li>
-        <li className="flex items-center space-x-2">
-          <div className="w-2 h-2 bg-cyan-400 rounded-full" />
-          <span>One Piece</span>
-        </li>
-      </ul>
-    </ContentCard>
-    <ContentCard title="Watchlist">
-      <ul className="space-y-3 text-gray-300 font-mono">
-        <li className="flex items-center space-x-2">
-          <div className="w-2 h-2 bg-red-400 rounded-full" />
-          <span>Chainsaw Man</span>
-        </li>
-        <li className="flex items-center space-x-2">
-          <div className="w-2 h-2 bg-blue-400 rounded-full" />
-          <span>Blue Lock</span>
-        </li>
-        <li className="flex items-center space-x-2">
-          <div className="w-2 h-2 bg-green-400 rounded-full" />
-          <span>Spy x Family</span>
-        </li>
-      </ul>
-    </ContentCard>
+  <div className="max-w-6xl mx-auto space-y-8">
+    {/* Hero Section */}
+    <div className="text-center mb-8">
+      <h1 className="text-4xl font-bold text-white mb-4">Anime Collection</h1>
+      <p className="text-gray-300 font-mono max-w-2xl mx-auto">
+        Exploring the vast world of anime from classics to latest releases
+      </p>
+    </div>
+
+    <div className="grid gap-6 md:grid-cols-3">
+      <ContentCard title="Currently Watching">
+        <div className="space-y-4">
+          <div className="bg-gray-800/50 rounded-lg p-4">
+            <div className="flex items-center space-x-2 mb-2">
+              <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
+              <span className="text-white font-semibold">Seasonal Picks</span>
+            </div>
+            <ul className="space-y-3 text-gray-300 font-mono">
+              <li>• Solo Leveling</li>
+              <li>• Classroom of the Elite S3</li>
+              <li>• Demon Slayer: Hashira Training</li>
+              <li>• Mushoku Tensei S2 Part 2</li>
+              <li>• Black Clover: Sword of the Wizard King</li>
+            </ul>
+          </div>
+        </div>
+      </ContentCard>
+
+      <ContentCard title="All-Time Favorites">
+        <div className="space-y-4 text-gray-300 font-mono">
+          <div className="border-l-2 border-purple-400 pl-4">
+            <h3 className="text-white font-semibold mb-2">Masterpieces</h3>
+            <ul className="space-y-2">
+              <li>• Attack on Titan</li>
+              <li>• Full Metal Alchemist: Brotherhood</li>
+              <li>• Steins;Gate</li>
+              <li>• Death Note</li>
+              <li>• Code Geass</li>
+            </ul>
+          </div>
+
+          <div className="border-l-2 border-blue-400 pl-4">
+            <h3 className="text-white font-semibold mb-2">Modern Classics</h3>
+            <ul className="space-y-2">
+              <li>• Jujutsu Kaisen</li>
+              <li>• Demon Slayer</li>
+              <li>• Chainsaw Man</li>
+              <li>• Spy x Family</li>
+              <li>• My Hero Academia</li>
+            </ul>
+          </div>
+
+          <div className="border-l-2 border-cyan-400 pl-4">
+            <h3 className="text-white font-semibold mb-2">Long-Running Epics</h3>
+            <ul className="space-y-2">
+              <li>• One Piece</li>
+              <li>• Naruto Series</li>
+              <li>• Bleach</li>
+              <li>• Dragon Ball Series</li>
+              <li>• Hunter x Hunter</li>
+            </ul>
+          </div>
+        </div>
+      </ContentCard>
+
+      <ContentCard title="Future Watchlist">
+        <div className="space-y-4">
+          <div className="bg-gray-800/50 rounded-lg p-4">
+            <h3 className="text-white font-semibold mb-2">Upcoming 2025</h3>
+            <ul className="space-y-2 text-gray-300 font-mono">
+              <li>• Bleach: Thousand-Year Blood War - The Final Act</li>
+              <li>• Kaiju No. 8</li>
+              <li>• Dragon Ball Daima</li>
+              <li>• Black Butler: Public School Arc</li>
+              <li>• Demon Slayer Season 5</li>
+            </ul>
+          </div>
+
+          <div className="bg-gray-800/50 rounded-lg p-4 mt-4">
+            <h3 className="text-white font-semibold mb-2">Rumored 2026</h3>
+            <ul className="space-y-2 text-gray-300 font-mono">
+              <li>• One Punch Man Season 3</li>
+              <li>• Chainsaw Man Season 2</li>
+              <li>• Attack on Titan: Alternative</li>
+              <li>• Tokyo Ghoul: Brotherhood</li>
+              <li>• My Hero Academia: Final Season</li>
+            </ul>
+          </div>
+
+          <div className="mt-4 p-4 bg-gradient-to-r from-purple-900/50 to-blue-900/50 rounded-lg">
+            <h3 className="text-white font-semibold mb-2">Most Anticipated</h3>
+            <p className="text-gray-300 font-mono">Looking forward to potential adaptations of:</p>
+            <ul className="space-y-2 text-gray-300 font-mono mt-2">
+              <li>• Solo Leveling Season 2</li>
+              <li>• Dandadan</li>
+              <li>• Hell's Paradise Season 2</li>
+            </ul>
+          </div>
+        </div>
+      </ContentCard>
+    </div>
   </div>
 );

@@ -158,161 +158,38 @@ const ContentCard = ({ title, children }) => (
 );
 
 const TechnologyPage = () => (
-  <div className="max-w-6xl mx-auto grid gap-6">
-    {/* Personal Tech Journey */}
-    <ContentCard title="My Tech Journey">
-      <div className="text-gray-300 font-mono space-y-4">
-        <p className="leading-relaxed">
-          My fascination with technology goes beyond just coding. I'm deeply passionate about understanding how things work,
-          from the intricate architecture of web applications to the hardware components that power our devices. When I'm not coding,
-          you'll often find me researching the latest CPU architectures or comparing different smartphone processors.
-        </p>
-        <p className="leading-relaxed">
-          Web development has become my creative outlet. There's something magical about transforming lines of code into
-          interactive experiences that users can engage with. I love experimenting with new frameworks and pushing the
-          boundaries of what's possible on the web.
-        </p>
-      </div>
+  <div className="max-w-6xl mx-auto grid gap-6 md:grid-cols-2">
+    <ContentCard title="Frontend Skills">
+      <ul className="space-y-3 text-gray-300 font-mono">
+        <li className="flex items-center space-x-2">
+          <div className="w-2 h-2 bg-cyan-400 rounded-full" />
+          <span>React.js & Next.js</span>
+        </li>
+        <li className="flex items-center space-x-2">
+          <div className="w-2 h-2 bg-purple-400 rounded-full" />
+          <span>Tailwind CSS</span>
+        </li>
+        <li className="flex items-center space-x-2">
+          <div className="w-2 h-2 bg-blue-400 rounded-full" />
+          <span>TypeScript</span>
+        </li>
+      </ul>
     </ContentCard>
-
-    {/* Current Project */}
-    <ContentCard title="Current Project: Biotech Data Visualization">
-      <div className="bg-cyan-900/20 p-4 rounded-lg border border-cyan-400/20 mb-4">
-        <div className="flex items-start space-x-3">
-          <div className="w-2 h-2 bg-cyan-400 rounded-full mt-2" />
-          <div className="flex-1">
-            <h3 className="text-cyan-400 font-mono mb-2">Project Overview</h3>
-            <p className="text-gray-300 font-mono leading-relaxed">
-              I'm currently working on a web application that visualizes complex biotech data using Three.js and D3.
-              The project aims to make molecular structures and genetic data more accessible and interactive for students
-              and researchers. It combines my love for both biotechnology and web development.
-            </p>
-          </div>
-        </div>
-      </div>
-    </ContentCard>
-
-    {/* Skills Grid */}
-    <div className="grid md:grid-cols-2 gap-6">
-      {/* Technical Skills */}
-      <ContentCard title="Technical Arsenal">
-        <div className="space-y-4">
-          <div>
-            <h3 className="text-cyan-400 font-mono mb-2">Frontend Development</h3>
-            <ul className="space-y-3 text-gray-300 font-mono">
-              <li className="flex items-center space-x-2">
-                <div className="w-2 h-2 bg-cyan-400 rounded-full" />
-                <span>React.js & Next.js</span>
-              </li>
-              <li className="flex items-center space-x-2">
-                <div className="w-2 h-2 bg-purple-400 rounded-full" />
-                <span>Tailwind CSS & Styled Components</span>
-              </li>
-              <li className="flex items-center space-x-2">
-                <div className="w-2 h-2 bg-blue-400 rounded-full" />
-                <span>TypeScript & JavaScript</span>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <h3 className="text-cyan-400 font-mono mb-2">Backend Development</h3>
-            <ul className="space-y-3 text-gray-300 font-mono">
-              <li className="flex items-center space-x-2">
-                <div className="w-2 h-2 bg-green-400 rounded-full" />
-                <span>Node.js & Express</span>
-              </li>
-              <li className="flex items-center space-x-2">
-                <div className="w-2 h-2 bg-yellow-400 rounded-full" />
-                <span>Python & FastAPI</span>
-              </li>
-              <li className="flex items-center space-x-2">
-                <div className="w-2 h-2 bg-red-400 rounded-full" />
-                <span>MongoDB & PostgreSQL</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </ContentCard>
-
-      {/* Hardware Enthusiasm */}
-      <ContentCard title="Hardware Geek Corner">
-        <div className="space-y-4 text-gray-300 font-mono">
-          <div className="bg-cyan-900/20 p-4 rounded-lg border border-cyan-400/20">
-            <h3 className="text-cyan-400 mb-2">Current Setup</h3>
-            <ul className="space-y-2">
-              <li className="flex items-center space-x-2">
-                <div className="w-2 h-2 bg-blue-400 rounded-full" />
-                <span>Custom-built PC with Ryzen 9 5900X</span>
-              </li>
-              <li className="flex items-center space-x-2">
-                <div className="w-2 h-2 bg-green-400 rounded-full" />
-                <span>32GB DDR4 RAM @ 3600MHz</span>
-              </li>
-              <li className="flex items-center space-x-2">
-                <div className="w-2 h-2 bg-purple-400 rounded-full" />
-                <span>RTX 3080 for ML workloads</span>
-              </li>
-            </ul>
-          </div>
-          <div className="bg-cyan-900/20 p-4 rounded-lg border border-cyan-400/20">
-            <h3 className="text-cyan-400 mb-2">Areas of Interest</h3>
-            <ul className="space-y-2">
-              <li className="flex items-center space-x-2">
-                <div className="w-2 h-2 bg-red-400 rounded-full" />
-                <span>Mobile SoC Architecture</span>
-              </li>
-              <li className="flex items-center space-x-2">
-                <div className="w-2 h-2 bg-yellow-400 rounded-full" />
-                <span>Custom Mechanical Keyboards</span>
-              </li>
-              <li className="flex items-center space-x-2">
-                <div className="w-2 h-2 bg-cyan-400 rounded-full" />
-                <span>Display Technology (OLED vs Mini-LED)</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </ContentCard>
-    </div>
-
-    {/* Learning Journey */}
-    <ContentCard title="Current Learning Focus">
-      <div className="grid md:grid-cols-2 gap-4">
-        <div className="bg-cyan-900/20 p-4 rounded-lg border border-cyan-400/20">
-          <h3 className="text-cyan-400 font-mono mb-2">Learning Goals</h3>
-          <ul className="space-y-2 text-gray-300 font-mono">
-            <li className="flex items-center space-x-2">
-              <div className="w-2 h-2 bg-green-400 rounded-full" />
-              <span>Three.js for 3D Web Applications</span>
-            </li>
-            <li className="flex items-center space-x-2">
-              <div className="w-2 h-2 bg-blue-400 rounded-full" />
-              <span>WebAssembly for Performance</span>
-            </li>
-            <li className="flex items-center space-x-2">
-              <div className="w-2 h-2 bg-purple-400 rounded-full" />
-              <span>Rust for System Programming</span>
-            </li>
-          </ul>
-        </div>
-        <div className="bg-cyan-900/20 p-4 rounded-lg border border-cyan-400/20">
-          <h3 className="text-cyan-400 font-mono mb-2">Future Aspirations</h3>
-          <ul className="space-y-2 text-gray-300 font-mono">
-            <li className="flex items-center space-x-2">
-              <div className="w-2 h-2 bg-yellow-400 rounded-full" />
-              <span>Contributing to Open Source</span>
-            </li>
-            <li className="flex items-center space-x-2">
-              <div className="w-2 h-2 bg-red-400 rounded-full" />
-              <span>Building AR/VR Applications</span>
-            </li>
-            <li className="flex items-center space-x-2">
-              <div className="w-2 h-2 bg-cyan-400 rounded-full" />
-              <span>Machine Learning Integration</span>
-            </li>
-          </ul>
-        </div>
-      </div>
+    <ContentCard title="Backend Skills">
+      <ul className="space-y-3 text-gray-300 font-mono">
+        <li className="flex items-center space-x-2">
+          <div className="w-2 h-2 bg-green-400 rounded-full" />
+          <span>Node.js</span>
+        </li>
+        <li className="flex items-center space-x-2">
+          <div className="w-2 h-2 bg-yellow-400 rounded-full" />
+          <span>Python</span>
+        </li>
+        <li className="flex items-center space-x-2">
+          <div className="w-2 h-2 bg-red-400 rounded-full" />
+          <span>SQL & NoSQL</span>
+        </li>
+      </ul>
     </ContentCard>
   </div>
 );

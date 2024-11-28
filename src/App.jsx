@@ -131,7 +131,7 @@ const HomePage = () => (
       {/* Profile Photo Section */}
       <div className="relative w-48 h-48 mx-auto mb-8">
         <img
-          src="/Vignesh_img.jpg"  // Replace with your actual image path
+          src="/public/Vignesh_img.jpg"  // Replace with your actual image path
           alt="Vignesh Seetharaman"
           className="rounded-full w-48 h-48 object-cover border-4 border-cyan-400/30 shadow-lg shadow-cyan-400/20"
         />

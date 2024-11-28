@@ -1,168 +1,125 @@
 import React, { useState, useEffect } from 'react';
-import { Gamepad2, TrendingUp, Cpu, Github, Linkedin, Mail } from 'lucide-react';
+import {
+  Gamepad2, TrendingUp, Cpu, Github, Linkedin, Mail,
+  Mountain, Cloud, Sun, Trees
+} from 'lucide-react';
 
-const App = () => {
-  const [activeSection, setActiveSection] = useState('home');
-  const [isFloating, setIsFloating] = useState(true);
+const AnimatedScene = () => {
+  const [scrollY, setScrollY] = useState(0);
 
   useEffect(() => {
-    const floatInterval = setInterval(() => {
-      setIsFloating(prev => !prev);
-    }, 1500);
-
-    return () => clearInterval(floatInterval);
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const sections = {
-    home: {
-      icon: <Gamepad2 className="w-12 h-12 text-purple-500" />,
-      title: "Game Enthusiast & Tech Lover",
-      content: (
-        <div className="space-y-4">
-          <p className="text-lg">
-            Hey there! 👋 I'm Vignesh, a tech enthusiast who loves diving into
-            new technologies, analyzing market trends, and exploring virtual worlds.
-          </p>
-          <div className={`transition-transform duration-1000 ${isFloating ? 'transform translate-y-2' : ''}`}>
-            <Gamepad2 className="w-24 h-24 text-purple-500 mx-auto" />
-          </div>
-        </div>
-      )
-    },
-    gaming: {
-      icon: <Gamepad2 className="w-12 h-12 text-green-500" />,
-      title: "Gaming Passion",
-      content: (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="bg-gradient-to-br from-purple-100 to-purple-200 p-6 rounded-lg">
-            <h3 className="text-xl font-bold mb-2">Favorite Games</h3>
-            <ul className="list-disc pl-5">
-              <li>Call of Duty</li>
-              <li>God of War</li>
-              <li>FIFA</li>
-            </ul>
-          </div>
-          <div className="bg-gradient-to-br from-green-100 to-green-200 p-6 rounded-lg">
-            <h3 className="text-xl font-bold mb-2">Gaming Achievements</h3>
-            <ul className="list-disc pl-5">
-              <li>Champion in Local Tournament</li>
-              <li>1000+ Hours in COD</li>
-              <li>Max Level Achievement</li>
-            </ul>
-          </div>
-        </div>
-      )
-    },
-    stocks: {
-      icon: <TrendingUp className="w-12 h-12 text-blue-500" />,
-      title: "Market Explorer",
-      content: (
-        <div className="space-y-4">
-          <div className="bg-gradient-to-br from-blue-100 to-blue-200 p-6 rounded-lg">
-            <h3 className="text-xl font-bold mb-4">Market Interests</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div>
-                <h4 className="font-bold">Favorite Sectors</h4>
-                <ul className="list-disc pl-5">
-                  <li>Technology</li>
-                  <li>Gaming Industry</li>
-                  <li>Renewable Energy</li>
-                </ul>
-              </div>
-              <div>
-                <h4 className="font-bold">Analysis Tools</h4>
-                <ul className="list-disc pl-5">
-                  <li>Technical Analysis</li>
-                  <li>Fundamental Research</li>
-                  <li>Market Sentiment</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      )
-    },
-    tech: {
-      icon: <Cpu className="w-12 h-12 text-red-500" />,
-      title: "Tech Enthusiast",
-      content: (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="bg-gradient-to-br from-red-100 to-red-200 p-6 rounded-lg">
-            <h3 className="text-xl font-bold mb-2">Tech Stack</h3>
-            <ul className="list-disc pl-5">
-              <li>React & JavaScript</li>
-              <li>Python Development</li>
-              <li>Cloud Technologies</li>
-            </ul>
-          </div>
-          <div className="bg-gradient-to-br from-orange-100 to-orange-200 p-6 rounded-lg">
-            <h3 className="text-xl font-bold mb-2">Current Learning</h3>
-            <ul className="list-disc pl-5">
-              <li>AI/ML</li>
-              <li>Blockchain</li>
-              <li>DevOps</li>
-            </ul>
-          </div>
-        </div>
-      )
-    }
-  };
-
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
-      <nav className="bg-white shadow-lg">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="flex justify-between h-16">
-            <div className="flex space-x-4 items-center">
-              {Object.entries(sections).map(([key, section]) => (
-                <button
-                  key={key}
-                  onClick={() => setActiveSection(key)}
-                  className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-colors ${
-                    activeSection === key
-                      ? 'bg-purple-100 text-purple-700'
-                      : 'hover:bg-gray-100'
-                  }`}
-                >
-                  {React.cloneElement(section.icon, { className: 'w-5 h-5' })}
-                  <span className="capitalize">{key}</span>
-                </button>
-              ))}
-            </div>
+    <div className="fixed inset-0 pointer-events-none">
+      {/* Sky gradient */}
+      <div className="absolute inset-0 bg-gradient-to-b from-sky-300 to-sky-500" />
+
+      {/* Animated clouds */}
+      {[...Array(5)].map((_, i) => (
+        <div
+          key={i}
+          className="absolute"
+          style={{
+            left: `${(i * 20) + (scrollY * 0.1)}%`,
+            top: `${i * 15}%`,
+            transform: `translateX(-${scrollY * (0.1 * (i + 1))}px)`,
+            transition: 'transform 0.1s linear',
+          }}
+        >
+          <Cloud className="text-white w-24 h-24 opacity-80" />
+        </div>
+      ))}
+
+      {/* Animated sun */}
+      <div
+        className="absolute right-20 top-20 animate-pulse"
+        style={{
+          transform: `translateY(${Math.sin(Date.now() / 1000) * 10}px)`,
+        }}
+      >
+        <Sun className="text-yellow-400 w-32 h-32" />
+      </div>
+
+      {/* Mountains in the background */}
+      <div className="absolute bottom-0 w-full">
+        <div className="relative h-64">
+          <Mountain className="absolute bottom-0 left-0 text-gray-700 w-96 h-64 opacity-80" />
+          <Mountain className="absolute bottom-0 left-1/4 text-gray-800 w-96 h-72 opacity-90" />
+          <Mountain className="absolute bottom-0 right-0 text-gray-600 w-96 h-56 opacity-70" />
+        </div>
+      </div>
+
+      {/* Foreground elements */}
+      <div className="absolute bottom-0 w-full">
+        <div className="relative h-48">
+          <Trees className="absolute bottom-0 left-10 text-green-700 w-32 h-48" />
+          <Trees className="absolute bottom-0 right-20 text-green-800 w-40 h-56" />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const HeroSection = () => {
+  return (
+    <div className="relative min-h-screen flex items-center justify-center px-4">
+      <div className="relative z-10 text-white text-center">
+        <h1 className="text-6xl font-bold mb-4 animate-fade-in">
+          Hi, I'm{' '}
+          <span className="bg-gradient-to-r from-purple-400 to-pink-400 text-transparent bg-clip-text">
+            Vignesh
+          </span>
+        </h1>
+        <p className="text-2xl mb-8 animate-slide-up">
+          Biotech Student | Tech Enthusiast | Gamer
+        </p>
+        <div className="flex space-x-4 justify-center">
+          <button className="bg-white/20 backdrop-blur-sm px-6 py-3 rounded-lg hover:bg-white/30 transition-all transform hover:scale-105">
+            Explore My Work
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const App = () => {
+  return (
+    <div className="relative min-h-screen overflow-x-hidden">
+      <AnimatedScene />
+      <HeroSection />
+
+      {/* Content sections would go here */}
+
+      {/* Navigation */}
+      <nav className="fixed top-0 w-full z-50 px-6 py-4">
+        <div className="flex justify-between items-center">
+          <div className="text-white font-bold text-xl">VS</div>
+          <div className="flex space-x-6">
+            {[
+              { icon: <Github />, link: "https://github.com/vseetha7" },
+              { icon: <Linkedin />, link: "#" },
+              { icon: <Mail />, link: "mailto:your.email@example.com" }
+            ].map((item, i) => (
+              <a
+                key={i}
+                href={item.link}
+                className="text-white hover:text-purple-400 transition-colors"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {item.icon}
+              </a>
+            ))}
           </div>
         </div>
       </nav>
-
-      <main className="max-w-7xl mx-auto px-4 py-12">
-        <div className="bg-white rounded-xl shadow-xl p-8">
-          <div className="text-center mb-8">
-            <div className="flex justify-center mb-4">
-              {sections[activeSection].icon}
-            </div>
-            <h2 className="text-3xl font-bold text-gray-800">
-              {sections[activeSection].title}
-            </h2>
-          </div>
-
-          <div className="mt-8">
-            {sections[activeSection].content}
-          </div>
-        </div>
-
-        <footer className="mt-12 text-center">
-          <div className="flex justify-center space-x-6">
-            <a href="https://github.com/vseetha7" className="text-gray-600 hover:text-gray-900">
-              <Github className="w-6 h-6" />
-            </a>
-            <a href="https://linkedin.com/in/yourusername" className="text-gray-600 hover:text-gray-900">
-              <Linkedin className="w-6 h-6" />
-            </a>
-            <a href="mailto:your.email@example.com" className="text-gray-600 hover:text-gray-900">
-              <Mail className="w-6 h-6" />
-            </a>
-          </div>
-        </footer>
-      </main>
     </div>
   );
 };

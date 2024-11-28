@@ -375,7 +375,7 @@ const GamingPage = () => (
         <div className="space-y-6">
           <div className="group relative overflow-hidden rounded-lg">
             <img
-              src="C:\Users\Vaishnavi\Downloads\image (8).png"
+              src="C:/Users/Vaishnavi/Downloads/image (8).png"
               alt="Genshin Impact"
               className="w-full h-48 object-cover rounded-lg transform transition-transform group-hover:scale-105"
             />

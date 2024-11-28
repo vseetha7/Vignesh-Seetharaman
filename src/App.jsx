@@ -373,19 +373,20 @@ const GamingPage = () => (
       {/* Modern Games */}
       <ContentCard title="Current Gaming Obsessions">
         <div className="space-y-6">
-          <div className="group relative overflow-hidden rounded-lg">
-            <img
-              src="C:/Users/Vaishnavi/Downloads/image (8).png"
-              alt="Genshin Impact"
-              className="w-full h-48 object-cover rounded-lg transform transition-transform group-hover:scale-105"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent p-4 flex flex-col justify-end">
-              <h3 className="text-white font-bold text-xl mb-1">Genshin Impact</h3>
-              <p className="text-gray-300 font-mono text-sm">
-                AR 56 • Main: Raiden Shogun
-                <br />
-                Favorite Region: Inazuma
-              </p>
+          <div className="group relative overflow-hidden rounded-lg bg-gray-800/50 p-6">
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="text-white font-bold text-xl">Genshin Impact</h3>
+              <div className="bg-cyan-400/20 px-3 py-1 rounded-full">
+                <span className="text-cyan-400 text-sm">Active Player</span>
+              </div>
+            </div>
+            <div className="space-y-2 text-gray-300 font-mono">
+              <p>AR 56 • Main: Raiden Shogun</p>
+              <p>Favorite Region: Inazuma</p>
+              <div className="mt-4 flex space-x-2">
+                <span className="bg-purple-400/20 text-purple-400 px-2 py-1 rounded-md text-xs">Electro Main</span>
+                <span className="bg-blue-400/20 text-blue-400 px-2 py-1 rounded-md text-xs">Inazuma Explorer</span>
+              </div>
             </div>
           </div>
 

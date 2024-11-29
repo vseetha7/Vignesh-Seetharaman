@@ -66,6 +66,7 @@ export default function PortfolioApp() {
             <div className="text-cyan-400 font-mono text-xl">Vignesh</div>
             <div className="flex space-x-6">
               <NavButton Icon={Home} text="Home" onClick={() => setCurrentPage('home')} active={currentPage === 'home'} />
+              <NavButton Icon={User} text="About" onClick={() => setCurrentPage('about')} active={currentPage === 'about'} />
               <NavButton Icon={Monitor} text="Tech" onClick={() => setCurrentPage('tech')} active={currentPage === 'tech'} />
               <NavButton Icon={TrendingUp} text="Stocks" onClick={() => setCurrentPage('stocks')} active={currentPage === 'stocks'} />
               <NavButton Icon={Gamepad} text="Gaming" onClick={() => setCurrentPage('gaming')} active={currentPage === 'gaming'} />
